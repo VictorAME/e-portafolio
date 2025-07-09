@@ -3,79 +3,324 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Análisis - Omar E-Portafolio</title>
+    <title>Análisis - Víctor E-Portafolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../CSS/index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Estilos específicos para la página de materia */
+        :root {
+            --materia-primary: #6C63FF;
+            --materia-secondary: #4D44DB;
+            --materia-accent: #FF6584;
+            --materia-light: #F7FAFC;
+            --materia-dark: #2D3748;
+            --materia-gray: #718096;
+        }
+        
+        .materia-header {
+            background: linear-gradient(135deg, var(--materia-primary), var(--materia-secondary));
+            color: white;
+            padding: 100px 0 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .materia-header::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            top: -50px;
+            right: -50px;
+        }
+        
+        .materia-header::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 101, 132, 0.1);
+            border-radius: 50%;
+            bottom: -30px;
+            left: -30px;
+        }
+        
+        .materia-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .materia-header h1 a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .materia-header h1 a:hover {
+            color: var(--materia-accent);
+        }
+        
+        .materia-header h1 span {
+            font-weight: 300;
+            opacity: 0.9;
+        }
+        
+        .materia-nav {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .materia-nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+        
+        .materia-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+        
+        .materia-nav ul li a {
+            color: var(--materia-dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 5px 0;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .materia-nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--materia-primary);
+            bottom: 0;
+            left: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .materia-nav ul li a:hover::after,
+        .materia-nav ul li a.active::after {
+            width: 100%;
+        }
+        
+        .materia-nav ul li a:hover,
+        .materia-nav ul li a.active {
+            color: var(--materia-primary);
+        }
+        
+        .materia-content {
+            padding: 60px 0;
+            background: var(--materia-light);
+        }
+        
+        .materia-content h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: var(--materia-dark);
+            position: relative;
+        }
+        
+        .materia-content h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--materia-primary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .parcial-section {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .parcial-section h3 {
+            font-size: 1.5rem;
+            color: var(--materia-primary);
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .project-card {
+            display: flex;
+            gap: 20px;
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--materia-primary);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border-left-color: var(--materia-accent);
+        }
+        
+        .project-icon {
+            font-size: 1.8rem;
+            color: var(--materia-primary);
+            min-width: 50px;
+            display: flex;
+            justify-content: center;
+            padding-top: 5px;
+        }
+        
+        .project-card:hover .project-icon {
+            color: var(--materia-accent);
+            transform: rotate(10deg);
+        }
+        
+        .project-content {
+            flex: 1;
+        }
+        
+        .project-content h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--materia-dark);
+        }
+        
+        .project-content p {
+            color: var(--materia-gray);
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: var(--materia-primary);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: var(--materia-secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
+        }
+        
+        .document-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
         /* Estilos para el documento completo */
         .full-document {
             background: white;
             border-radius: 8px;
-            padding: 2rem;
-            margin: 2rem 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+            font-family: 'Poppins', sans-serif;
             line-height: 1.7;
+            color: var(--materia-dark);
         }
         
         .document-header {
             text-align: center;
-            margin-bottom: 2rem;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 1rem;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--materia-primary);
         }
         
         .document-title {
-            color: #2c3e50;
+            color: var(--materia-dark);
             font-size: 1.8rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
         }
         
         .document-subtitle {
-            color: #3498db;
+            color: var(--materia-primary);
             font-size: 1.3rem;
-            font-weight: 500;
+            font-weight: 600;
+            margin-bottom: 5px;
         }
         
         .document-author {
             font-style: italic;
-            margin-top: 0.5rem;
+            color: var(--materia-gray);
         }
         
         .section-title {
-            color: #2c3e50;
+            color: var(--materia-dark);
             font-size: 1.5rem;
-            margin: 2rem 0 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid #eaeaea;
+            margin: 30px 0 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #eee;
+            font-family: 'Montserrat', sans-serif;
         }
         
         .subsection-title {
-            color: #3498db;
+            color: var(--materia-primary);
             font-size: 1.2rem;
-            margin: 1.5rem 0 0.8rem;
+            margin: 20px 0 10px;
+            font-weight: 600;
         }
         
         .content-block {
-            margin-bottom: 1.5rem;
+            margin-bottom: 20px;
             text-align: justify;
         }
         
         .content-list {
-            padding-left: 1.8rem;
-            margin: 1rem 0;
+            padding-left: 20px;
+            margin: 15px 0;
         }
         
         .content-list li {
-            margin-bottom: 0.7rem;
+            margin-bottom: 10px;
+            line-height: 1.6;
         }
         
         .code-example {
-            background: #f5f5f5;
-            padding: 1rem;
+            background: #f8f9fa;
+            padding: 15px;
             border-radius: 6px;
-            border-left: 4px solid #3498db;
-            margin: 1rem 0;
+            border-left: 4px solid var(--materia-primary);
+            margin: 15px 0;
             font-family: 'Courier New', monospace;
             overflow-x: auto;
         }
@@ -83,325 +328,399 @@
         .code-example pre {
             margin: 0;
             white-space: pre-wrap;
+            line-height: 1.5;
         }
         
         .image-container {
             text-align: center;
-            margin: 1.5rem 0;
+            margin: 20px 0;
         }
         
         .image-container img {
             max-width: 100%;
             height: auto;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            border-radius: 6px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
         }
         
+        .materia-footer {
+            background: var(--materia-dark);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 60px;
+        }
+        
+        .materia-footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
         @media (max-width: 768px) {
-            .full-document {
-                padding: 1rem;
+            .materia-header h1 {
+                font-size: 2rem;
+            }
+            
+            .materia-nav .container {
+                flex-direction: column;
+            }
+            
+            .materia-nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .project-card {
+                flex-direction: column;
+            }
+            
+            .project-icon {
+                margin-bottom: 15px;
             }
             
             .document-title {
                 font-size: 1.5rem;
             }
+        }
+        
+        @media (max-width: 576px) {
+            .materia-header {
+                padding: 80px 0 40px;
+            }
             
-            .section-title {
-                font-size: 1.3rem;
+            .materia-content h2 {
+                font-size: 1.7rem;
+            }
+            
+            .parcial-section {
+                padding: 20px;
+            }
+            
+            .full-document {
+                padding: 20px;
             }
         }
     </style>
 </head>
 <body>
-    <header>
+    <header class="materia-header">
         <div class="container">
-            <h1><a href="index.html">Omar</a> <span>/ Análisis</span></h1>
-            <nav>
-                <ul>
-                    <li><a href="../index.html#about">Inicio</a></li>
-                    <li><a href="materia1.html">Analisis</a></li>
-                    <li><a href="materia2.html">Moviles</a></li>
-                    <li><a href="../index.html#contacto">Contacto</a></li>
-                    <li><a href="yo.html">Sobre mí</a></li>
-                </ul>
-            </nav>
+            <h1><a href="../index.html">Víctor Martínez</a> <span>/ Análisis</span></h1>
         </div>
     </header>
 
-    <section id="materia-content" class="container">
-        <h2>Trabajos de Análisis</h2>
-        
-        <!-- PARCIAL 1 (CONTENIDO ORIGINAL COMPLETO) -->
-        <div class="parcial-section">
-            <h3><i class="fas fa-book-open"></i> Parcial 1</h3>
-            
-            <div class="project-card">
-                <div class="project-icon">
-                    <i class="fas fa-podcast"></i>
-                </div>
-                <div class="project-content">
-                    <h4>1.1.- Conceptos de POO (Podcast)</h4>
-                    <p>Audio explicativo sobre los conceptos básicos de Programación Orientada a Objetos.</p>
-                    <a href="https://drive.google.com/drive/folders/1OfmqyGzpXZM635ahaUxaJ52AAOD454sY?usp=sharing" target="_blank" class="btn">
-                        <i class="fas fa-external-link-alt"></i> Ver en Google Drive
-                    </a>
-                </div>
-            </div>
-            
-            <div class="project-card">
-                <div class="project-icon">
-                    <i class="fas fa-code"></i>
-                </div>
-                <div class="project-content">
-                    <h4>1.2.- Creación de clase</h4>
-                    <p>Ejercicio práctico de creación de clases en programación orientada a objetos.</p>
-                    <a href="https://onlinegdb.com/OaQy6q2hJ3" target="_blank" class="btn">
-                        <i class="fas fa-external-link-alt"></i> Ver código
-                    </a>
-                </div>
-            </div>
-            
-            <div class="project-card">
-                <div class="project-icon">
-                    <i class="fas fa-car"></i>
-                </div>
-                <div class="project-content">
-                    <h4>1.3.- Creación de clase Car</h4>
-                    <p>Implementación de una clase Car con sus atributos y métodos.</p>
-                    <a href="https://www.onlinegdb.com/edit/dB6g-BZ9-8" target="_blank" class="btn">
-                        <i class="fas fa-external-link-alt"></i> Ver código
-                    </a>
-                </div>
-            </div>
-            
-            <div class="project-card">
-                <div class="project-icon">
-                    <i class="fas fa-project-diagram"></i>
-                </div>
-                <div class="project-content">
-                    <h4>1.4.- Diagrama de clases y herencia</h4>
-                    <p>Diagrama UML mostrando relaciones de herencia entre clases.</p>
-                    <a href="https://drive.google.com/drive/folders/1WbGnEAbrmwztvXbGSvaDS2jdudmVifEa?usp=sharing" target="_blank" class="btn">
-                        <i class="fas fa-external-link-alt"></i> Ver diagrama
-                    </a>
-                </div>
-            </div>
-            
-            <div class="project-card">
-                <div class="project-icon">
-                    <i class="fas fa-car-side"></i>
-                </div>
-                <div class="project-content">
-                    <h4>1.5.- Ejercicio clase Car y Cabriole con herencia</h4>
-                    <p>Implementación de herencia entre clases Car y Cabriole.</p>
-                    <a href="https://onlinegdb.com/KAJSKU7Sg" target="_blank" class="btn">
-                        <i class="fas fa-external-link-alt"></i> Ver código
-                    </a>
-                </div>
-            </div>
-            
-            <div class="project-card">
-                <div class="project-icon">
-                    <i class="fas fa-folder-open"></i>
-                </div>
-                <div class="project-content">
-                    <h4>1.6.- E-Portafolio</h4>
-                    <p>Documentación y archivos del portafolio académico.</p>
-                    <a href="https://drive.google.com/drive/folders/1y9gmiQyDqp-QAahYpd_PZOUm5Tk8n3do?usp=sharing" target="_blank" class="btn">
-                        <i class="fas fa-external-link-alt"></i> Ver documentos
-                    </a>
-                </div>
-            </div>
-            
-            <div class="project-card">
-                <div class="project-icon">
-                    <i class="fas fa-sitemap"></i>
-                </div>
-                <div class="project-content">
-                    <h4>1.7.- Relaciones entre clases (composición y agregación)</h4>
-                    <p>Ejemplos prácticos de relaciones entre clases.</p>
-                    <a href="https://drive.google.com/drive/folders/1BQ4chl2H4nZM02fND1fbDcMZON0r_zYx?usp=sharing" target="_blank" class="btn">
-                        <i class="fas fa-external-link-alt"></i> Ver ejemplos
-                    </a>
-                </div>
-            </div>
+    <nav class="materia-nav">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html#about">Inicio</a></li>
+                <li><a href="materia1.html" class="active">Análisis</a></li>
+                <li><a href="materia2.html">Móviles</a></li>
+                <li><a href="../index.html#contact">Contacto</a></li>
+                <li><a href="yo.html">Sobre mí</a></li>
+            </ul>
         </div>
+    </nav>
 
-        <!-- PARCIAL 2 (CONTENIDO ORIGINAL COMPLETO) -->
-        <div class="parcial-section">
-            <h3><i class="fas fa-book-open"></i> Parcial 2</h3>
+    <section class="materia-content">
+        <div class="container">
+            <h2>Trabajos de Análisis</h2>
             
-            <div class="project-card">
-                <div class="project-icon">
-                    <i class="fas fa-shapes"></i>
+            <!-- PARCIAL 1 (CONTENIDO ORIGINAL COMPLETO) -->
+            <div class="parcial-section">
+                <h3><i class="fas fa-book-open"></i> Parcial 1</h3>
+                
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-podcast"></i>
+                    </div>
+                    <div class="project-content">
+                        <h4>1.1.- Conceptos de POO (Podcast)</h4>
+                        <a href="https://drive.google.com/file/d/1G_fuEiOAxs3CAeMo8d17N42rxBx9g6mC/view" target="_blank" class="btn">
+                            <i class="fas fa-external-link-alt"></i> Ver en Google Drive
+                        </a>
+                    </div>
                 </div>
-                <div class="project-content">
-                    <h4>2.1.- Clase Abstracta vs Interfaz en Java</h4>
-                    <div class="code-block">
-                        <h5>Clase Abstracta</h5>
-                        <p>Una clase abstracta es una clase que no puede ser instanciada directamente, sino que debe ser extendida por otras clases. Puede contener métodos abstractos (sin implementación) y métodos concretos (con implementación).</p>
-                        
-                        <h5>Interfaz</h5>
-                        <p>Una interfaz es una colección de métodos abstractos (a partir de Java 8 también puede tener métodos default y estáticos). Las interfaces solo pueden contener constantes (public static final) y métodos abstractos (antes de Java 8).</p>
-                        
-                        <a href="https://drive.google.com/drive/folders/1CQcqZReMpILPYH_GyjLzvxaB0xIX1Mxm" target="_blank" class="btn">
-                            <i class="fas fa-external-link-alt"></i> Ver ejemplos completos
+                
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="project-content">
+                        <h4>1.2.- Creación de clase</h4>
+                        <a href="https://drive.google.com/file/d/1JYCY0vC1pG0SI9AoMVKxvCsJZzvJvi57/view" target="_blank" class="btn">
+                            <i class="fas fa-external-link-alt"></i> Ver código
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <div class="project-content">
+                        <h4>1.3.- Creación de clase Car</h4>
+                        <p>Implementación de una clase Car con sus atributos y métodos.</p>
+                        <a href="https://drive.google.com/file/d/1BllYajtaCJpP4G7soBTKOn9KB_XZJ8c9/view?usp=sharing" target="_blank" class="btn">
+                            <i class="fas fa-external-link-alt"></i> Ver código
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <div class="project-content">
+                        <h4>1.4.- Diagrama de clases y herencia</h4>
+                        <p>Diagrama UML mostrando relaciones de herencia entre clases.</p>
+                        <a href="https://drive.google.com/file/d/1ufqIvgASRm987Osq38T1wNWtLX8gN8F9/view?usp=sharing" target="_blank" class="btn">
+                            <i class="fas fa-external-link-alt"></i> Ver diagrama
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-car-side"></i>
+                    </div>
+                    <div class="project-content">
+                        <h4>1.5.- Ejercicio clase Car y Cabriole con herencia</h4>
+                        <p>Implementación de herencia entre clases Car y Cabriole.</p>
+                        <a href="https://onlinegdb.com/KAJSKU7Sg" target="_blank" class="btn">
+                            <i class="fas fa-external-link-alt"></i> Ver código
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-folder-open"></i>
+                    </div>
+                    <div class="project-content">
+                        <h4>1.6.- E-Portafolio</h4>
+                        <p>Documentación y archivos del portafolio académico.</p>
+                        <a href="#" target="_blank" class="btn">
+                            <i class="fas fa-external-link-alt"></i> Ver documentos
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-sitemap"></i>
+                    </div>
+                    <div class="project-content">
+                        <h4>1.7.- Relaciones entre clases (composición y agregación)</h4>
+                        <p>Ejemplos prácticos de relaciones entre clases.</p>
+                        <a href="https://drive.google.com/drive/folders/1SSKBWIPVAGuX2JCE8DPslcImSQ4K2AbZ?usp=sharing" target="_blank" class="btn">
+                            <i class="fas fa-external-link-alt"></i> Ver ejemplos
                         </a>
                     </div>
                 </div>
             </div>
-            
-            <div class="project-card">
-                <div class="project-icon">
-                    <i class="fas fa-piggy-bank"></i>
+
+            <!-- PARCIAL 2 (CONTENIDO ORIGINAL COMPLETO) -->
+            <div class="parcial-section">
+                <h3><i class="fas fa-book-open"></i> Parcial 2</h3>
+                
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-shapes"></i>
+                    </div>
+                    <div class="project-content">
+                        <h4>2.1.- Clase Abstracta vs Interfaz en Java</h4>
+                        <div class="content-block">
+                            <h5 class="subsection-title">Clase Abstracta</h5>
+                            <p>Una clase abstracta es una clase que no puede ser instanciada directamente, sino que debe ser extendida por otras clases. Puede contener métodos abstractos (sin implementación) y métodos concretos (con implementación).</p>
+                            
+                            <h5 class="subsection-title">Interfaz</h5>
+                            <p>Una interfaz es una colección de métodos abstractos (a partir de Java 8 también puede tener métodos default y estáticos). Las interfaces solo pueden contener constantes (public static final) y métodos abstractos (antes de Java 8).</p>
+                            
+                            <a href="https://drive.google.com/file/d/1plfwCuWVeHa-H3vZvP2-ThFIzCMkhnZ3/view" target="_blank" class="btn">
+                                <i class="fas fa-external-link-alt"></i> Ver ejemplos completos
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="project-content">
-                    <h4>2.2.- Ejemplo de Clase Abstracta: Sistema de Cuentas Bancarias</h4>
-                    <p>Implementación de un sistema de cuentas bancarias usando una clase abstracta <code>Cuenta</code> y una clase concreta <code>CuentaBasica</code>.</p>
-                    <a href="https://www.youtube.com/shorts/SAgQilyuytE" target="_blank" class="btn">
-                        <i class="fas fa-external-link-alt"></i> Ver explicación en video
-                    </a>
-                </div>
-            </div>
-            
-            <div class="project-card">
-                <div class="project-icon">
-                    <i class="fas fa-presentation"></i>
-                </div>
-                <div class="project-content">
-                    <h4>2.3.- Presentación: Programación Orientada a Objetos</h4>
-                    <p>Presentación detallada sobre los conceptos fundamentales de POO.</p>
-                    <a href="https://docs.google.com/presentation/d/1PwpBGKVAAtHg7H-uzkjICXIrdhxSVUiT/edit?usp=drive_link&ouid=102620897780908397328&rtpof=true&sd=true" target="_blank" class="btn">
-                        <i class="fas fa-external-link-alt"></i> Ver presentación
-                    </a>
-                </div>
-            </div>
-            
-            <div class="project-card">
-                <div class="project-icon">
-                    <i class="fas fa-folder-open"></i>
-                </div>
-                <div class="project-content">
-                    <h4>2.3.1 a 2.3.4 - Documentación adicional sobre POO</h4>
-                    <p>Recursos complementarios sobre Programación Orientada a Objetos:</p>
-                    <div class="document-links">
-                        <a href="https://drive.google.com/drive/folders/11QPCqnuxnLWWP-A3K4XrQmrSTnOPvNWg" target="_blank" class="btn">
-                            <i class="fas fa-external-link-alt"></i> 2.3.1 - Fundamentos
-                        </a>
-                        <a href="https://drive.google.com/drive/folders/1doyzN-9VPzMcV1Htgiyj502fmNPptasy?usp=sharing" target="_blank" class="btn">
-                            <i class="fas fa-external-link-alt"></i> 2.3.2 - Ejemplos
-                        </a>
-                        <a href="https://drive.google.com/drive/folders/1yI415Bh67aW64GYN9hYfp3ho8saQdbJj?usp=sharing" target="_blank" class="btn">
-                            <i class="fas fa-external-link-alt"></i> 2.3.3 - Casos de estudio
-                        </a>
-                        <a href="https://drive.google.com/drive/folders/17TxGqFagkOofFRP_p1rB2U39CJ-WR5C3?usp=sharing" target="_blank" class="btn">
-                            <i class="fas fa-external-link-alt"></i> 2.3.4 - Ejercicios resueltos
+                
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-piggy-bank"></i>
+                    </div>
+                    <div class="project-content">
+                        <h4>2.2.- Ejemplo de Clase Abstracta: Sistema de Cuentas Bancarias</h4>
+                        <p>Implementación de un sistema de cuentas bancarias usando una clase abstracta <code>Cuenta</code> y una clase concreta <code>CuentaBasica</code>.</p>
+                        <a href="https://drive.google.com/drive/u/1/folders/1xdxt7Udx8R3Uyf7iGOfJxseXaIR0D9Tn" target="_blank" class="btn">
+                            <i class="fas fa-external-link-alt"></i> Ver explicación en video
                         </a>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <!-- PARCIAL 3 - CONTENIDO COMPLETO DEL DOCUMENTO WORD -->
-        <div class="parcial-section">
-            <h3><i class="fas fa-book-open"></i> Parcial 3</h3>
-            
-            <div class="project-card">
-                <div class="project-icon">
-                    <i class="fas fa-file-word"></i>
+                
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-presentation"></i>
+                    </div>
+                    <div class="project-content">
+                        <h4>2.3.- Presentación: Programación Orientada a Objetos</h4>
+                        <p>Presentación detallada sobre los conceptos fundamentales de POO.</p>
+                        <a href="https://docs.google.com/presentation/d/1PwpBGKVAAtHg7H-uzkjICXIrdhxSVUiT/edit?slide=id.p1#slide=id.p1" target="_blank" class="btn">
+                            <i class="fas fa-external-link-alt"></i> Ver presentación
+                        </a>
+                    </div>
                 </div>
-                <div class="project-content">
-                    <h4>3.4.- Resumen Completo de Diagramas UML</h4>
-                    <p>Documento técnico detallado sobre diagramas en ingeniería de software.</p>
-                    
-                    <div class="full-document">
-                        <div class="document-header">
-                            <div class="image-container">
-                                <img src="media/image1.png" alt="Logo" style="width: 5in; height: 1.29in;">
+                
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-folder-open"></i>
+                    </div>
+                    <div class="project-content">
+                        <h4>2.3.1 a 2.3.4 - Documentación adicional sobre POO</h4>
+                        <p>Recursos complementarios sobre Programación Orientada a Objetos:</p>
+                        <div class="document-links">
+                            <a href="https://drive.google.com/drive/folders/1tBZOCesDgCMbW542Tkew_LyC_LKUxY7c?usp=sharing" target="_blank" class="btn">
+                                <i class="fas fa-external-link-alt"></i> 2.3.1 - Fundamentos
+                            </a>
+                            <a href="https://drive.google.com/drive/folders/1ZQarmKr-EYkdLM1H1m1CZB5L3nv1zYqE?usp=sharing" target="_blank" class="btn">
+                                <i class="fas fa-external-link-alt"></i> 2.3.2 - Ejemplos
+                            </a>
+                            <a href="https://drive.google.com/drive/folders/18t_OCpzM_ikCJM7Awq3gujEayclkR9o6?usp=sharing" target="_blank" class="btn">
+                                <i class="fas fa-external-link-alt"></i> 2.3.3 - Casos de estudio
+                            </a>
+                            <a href="https://drive.google.com/drive/folders/1Kl417mvBURWA7lZGH9TzQgqMdzNW558R?usp=sharing" target="_blank" class="btn">
+                                <i class="fas fa-external-link-alt"></i> 2.3.4 - Ejercicios resueltos
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PARCIAL 3 - CONTENIDO COMPLETO DEL DOCUMENTO WORD -->
+            <div class="parcial-section">
+                <h3><i class="fas fa-book-open"></i> Parcial 3</h3>
+                
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-file-word"></i>
+                    </div>
+                    <div class="project-content">
+                        <h4>3.1.- Actualización Portafolio</h4>
+                        <p>Documento técnico detallado sobre diagramas en ingeniería de software.</p>
+                        <a href="https://drive.google.com/file/d/15tTV9-aidQ-7UExMUuQmwlBEiyFdW2Br/view?usp=sharing" target="_blank" class="btn">
+                            <i class="fas fa-external-link-alt"></i> Ver presentación
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-file-word"></i>
+                    </div>
+                    <div class="project-content">
+                        <h4>3.2.- Diagrama de secuencia avance</h4>
+                        <a href="https://drive.google.com/file/d/1bheuCAr2L-_t-IDtaRpx2uHV5rVUiUqL/view?usp=sharing" target="_blank" class="btn">
+                            <i class="fas fa-external-link-alt"></i> Ver presentación
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-file-word"></i>
+                    </div>
+                    <div class="project-content">
+                        <h4>3.4.- Resumen de Diagramas UML</h4>
+                        <p>Documento técnico detallado sobre diagramas en ingeniería de software.</p>
+                        
+                        <div class="full-document">
+                            <div class="document-header">
+                                <div class="image-container">
+                                    <img src="media/image1.png" alt="Logo" style="width: 5in; height: 1.29in;">
+                                </div>
+                                <h2 class="document-title">MARTINEZ ESPINOZA VICTOR ALEJANDRO - ANALISIS Y DISEÑO ORIENTADO A OBJETOS</h2>
+                                <h3 class="document-subtitle">RESUMEN DE DIAGRAMAS</h3>
+                                <h4 class="document-subtitle">3.4 -- RESUMEN</h4>
+                                <p class="document-author">ISC -- 601 | 04/06/2025</p>
                             </div>
-                            <h2 class="document-title">JIMENEZ TENORIO GABRIEL OMAR ANALISIS Y DISEÑO ORIENTADO A OBJETOS</h2>
-                            <h3 class="document-subtitle">RESUMEN DE DIAGRAMAS</h3>
-                            <h4 class="document-subtitle">3.4 -- RESUMEN</h4>
-                            <p class="document-author">ISC -- 601 | 04/06/2023</p>
-                        </div>
-                        
-                        <h3 class="section-title">Tipos de Diagramas en Ingeniería de Software</h3>
-                        
-                        <h4 class="subsection-title">Índice Analítico</h4>
-                        <ol class="content-list">
-                            <li><strong>Introducción</strong>
-                                <ol type="a">
-                                    <li>Importancia de los diagramas en ingeniería de software</li>
-                                    <li>Objetivos del documento</li>
-                                    <li>Tipos de diagramas cubiertos</li>
-                                </ol>
-                            </li>
-                            <li><strong>Diagrama de Actividades</strong>
-                                <ol type="a">
-                                    <li>Definición y propósito fundamental</li>
-                                    <li>Elementos clave y simbología</li>
-                                    <li>Ejemplo práctico: Sistema de gestión de alumnos con SQLite</li>
-                                    <li>Aplicaciones avanzadas</li>
-                                </ol>
-                            </li>
-                            <li><strong>Diagrama de Secuencia</strong>
-                                <ol type="a">
-                                    <li>Conceptos fundamentales</li>
-                                    <li>Componentes estructurales</li>
-                                    <li>Ejemplo detallado: Proceso en cafetería</li>
-                                    <li>Aplicaciones en sistemas modernos</li>
-                                </ol>
-                            </li>
-                            <li><strong>Diagrama de Objetos</strong>
-                                <ol type="a">
-                                    <li>Diferencias clave con diagrama de clases</li>
-                                    <li>Ejemplo ampliado: Sistema de gestión de alumnos</li>
-                                    <li>Relación con otros diagramas UML</li>
-                                </ol>
-                            </li>
-                            <li><strong>Diagrama de Gestión (Flujo de Cajas)</strong>
-                                <ol type="a">
-                                    <li>Contexto del sistema modelado</li>
-                                    <li>Componentes principales</li>
-                                    <li>Casos de uso detallados</li>
-                                </ol>
-                            </li>
-                            <li><strong>Conclusión</strong>
-                                <ol type="a">
-                                    <li>Valor integrado de los diagramas</li>
-                                    <li>Recomendaciones de uso</li>
-                                    <li>Perspectivas futuras</li>
-                                </ol>
-                            </li>
-                        </ol>
-                        
-                        <!-- SECCIÓN 1: INTRODUCCIÓN -->
-                        <h4 class="section-title">1. Introducción</h4>
-                        <div class="content-block">
-                            <p>En el desarrollo de software, los diagramas son herramientas fundamentales que permiten visualizar, diseñar y documentar sistemas de manera estructurada. Estos modelos gráficos facilitan la comunicación entre desarrolladores, analistas y stakeholders, asegurando que todos comprendan el funcionamiento del sistema antes de su implementación. Los diagramas no solo sirven como guía durante la fase de desarrollo, sino que también son cruciales para el mantenimiento futuro del sistema, permitiendo a nuevos integrantes del equipo comprender rápidamente la arquitectura y los procesos implementados.</p>
-                            <p>En este documento, se analizan cuatro tipos de diagramas esenciales en ingeniería de software: el Diagrama de Actividades, que muestra flujos de procesos; el Diagrama de Secuencia, que ilustra interacciones temporales; el Diagrama de Objetos, que representa instancias en tiempo de ejecución; y el Diagrama de Gestión, que modela procesos operativos complejos. Cada uno cumple una función específica y se utiliza en diferentes etapas del ciclo de vida del software, desde el diseño inicial hasta el mantenimiento y la optimización del sistema.</p>
-                        </div>
-                        
-                        <!-- SECCIÓN 2: DIAGRAMA DE ACTIVIDADES -->
-                        <h4 class="section-title">2. Diagrama de Actividades</h4>
-                        
-                        <h5 class="subsection-title">2.1 Definición y Propósito</h5>
-                        <div class="content-block">
-                            <p>Un Diagrama de Actividades es una representación gráfica de los flujos de trabajo y procesos dentro de un sistema. Se asemeja a un flujograma, donde se detallan las acciones, decisiones y secuencias lógicas que componen un proceso determinado. Este tipo de diagrama es particularmente útil para modelar comportamientos complejos que involucran múltiples participantes o sistemas.</p>
-                            <p>Los Diagramas de Actividades se utilizan principalmente para:</p>
-                            <ul class="content-list">
-                                <li>Modelar casos de uso complejos que involucran múltiples pasos y decisiones</li>
-                                <li>Representar algoritmos y procesos de negocio de manera clara y concisa</li>
-                                <li>Identificar posibles cuellos de botella o puntos de falla en un proceso</li>
-                                <li>Facilitar la comunicación entre equipos técnicos y no técnicos al presentar procesos de manera visual</li>
-                            </ul>
-                        </div>
-                        
-                        <h5 class="subsection-title">2.2 Ejemplo Práctico (Código SQLite)</h5>
-                        <div class="content-block">
-                            <p>El siguiente fragmento de código ilustra un proceso típico que podría representarse mediante un Diagrama de Actividades:</p>
-                            <div class="code-example">
-                                <pre>AlumnosDbHelper admin = new AlumnosDbHelper(this,"administracion",null,1);
+                            
+                            <h3 class="section-title">Tipos de Diagramas en Ingeniería de Software</h3>
+                            
+                            <h4 class="subsection-title">Índice Analítico</h4>
+                            <ol class="content-list">
+                                <li><strong>Introducción</strong>
+                                    <ol type="a">
+                                        <li>Importancia de los diagramas en ingeniería de software</li>
+                                        <li>Objetivos del documento</li>
+                                        <li>Tipos de diagramas cubiertos</li>
+                                    </ol>
+                                </li>
+                                <li><strong>Diagrama de Actividades</strong>
+                                    <ol type="a">
+                                        <li>Definición y propósito fundamental</li>
+                                        <li>Elementos clave y simbología</li>
+                                        <li>Ejemplo práctico: Sistema de gestión de alumnos con SQLite</li>
+                                        <li>Aplicaciones avanzadas</li>
+                                    </ol>
+                                </li>
+                                <li><strong>Diagrama de Secuencia</strong>
+                                    <ol type="a">
+                                        <li>Conceptos fundamentales</li>
+                                        <li>Componentes estructurales</li>
+                                        <li>Ejemplo detallado: Proceso en cafetería</li>
+                                        <li>Aplicaciones en sistemas modernos</li>
+                                    </ol>
+                                </li>
+                                <li><strong>Diagrama de Objetos</strong>
+                                    <ol type="a">
+                                        <li>Diferencias clave con diagrama de clases</li>
+                                        <li>Ejemplo ampliado: Sistema de gestión de alumnos</li>
+                                        <li>Relación con otros diagramas UML</li>
+                                    </ol>
+                                </li>
+                                <li><strong>Diagrama de Gestión (Flujo de Cajas)</strong>
+                                    <ol type="a">
+                                        <li>Contexto del sistema modelado</li>
+                                        <li>Componentes principales</li>
+                                        <li>Casos de uso detallados</li>
+                                    </ol>
+                                </li>
+                                <li><strong>Conclusión</strong>
+                                    <ol type="a">
+                                        <li>Valor integrado de los diagramas</li>
+                                        <li>Recomendaciones de uso</li>
+                                        <li>Perspectivas futuras</li>
+                                    </ol>
+                                </li>
+                            </ol>
+                            
+                            <!-- SECCIÓN 1: INTRODUCCIÓN -->
+                            <h4 class="section-title">1. Introducción</h4>
+                            <div class="content-block">
+                                <p>En el desarrollo de software, los diagramas son herramientas fundamentales que permiten visualizar, diseñar y documentar sistemas de manera estructurada. Estos modelos gráficos facilitan la comunicación entre desarrolladores, analistas y stakeholders, asegurando que todos comprendan el funcionamiento del sistema antes de su implementación. Los diagramas no solo sirven como guía durante la fase de desarrollo, sino que también son cruciales para el mantenimiento futuro del sistema, permitiendo a nuevos integrantes del equipo comprender rápidamente la arquitectura y los procesos implementados.</p>
+                                <p>En este documento, se analizan cuatro tipos de diagramas esenciales en ingeniería de software: el Diagrama de Actividades, que muestra flujos de procesos; el Diagrama de Secuencia, que ilustra interacciones temporales; el Diagrama de Objetos, que representa instancias en tiempo de ejecución; y el Diagrama de Gestión, que modela procesos operativos complejos. Cada uno cumple una función específica y se utiliza en diferentes etapas del ciclo de vida del software, desde el diseño inicial hasta el mantenimiento y la optimización del sistema.</p>
+                            </div>
+                            
+                            <!-- SECCIÓN 2: DIAGRAMA DE ACTIVIDADES -->
+                            <h4 class="section-title">2. Diagrama de Actividades</h4>
+                            
+                            <h5 class="subsection-title">2.1 Definición y Propósito</h5>
+                            <div class="content-block">
+                                <p>Un Diagrama de Actividades es una representación gráfica de los flujos de trabajo y procesos dentro de un sistema. Se asemeja a un flujograma, donde se detallan las acciones, decisiones y secuencias lógicas que componen un proceso determinado. Este tipo de diagrama es particularmente útil para modelar comportamientos complejos que involucran múltiples participantes o sistemas.</p>
+                                <p>Los Diagramas de Actividades se utilizan principalmente para:</p>
+                                <ul class="content-list">
+                                    <li>Modelar casos de uso complejos que involucran múltiples pasos y decisiones</li>
+                                    <li>Representar algoritmos y procesos de negocio de manera clara y concisa</li>
+                                    <li>Identificar posibles cuellos de botella o puntos de falla en un proceso</li>
+                                    <li>Facilitar la comunicación entre equipos técnicos y no técnicos al presentar procesos de manera visual</li>
+                                </ul>
+                            </div>
+                            
+                            <h5 class="subsection-title">2.2 Ejemplo Práctico (Código SQLite)</h5>
+                            <div class="content-block">
+                                <p>El siguiente fragmento de código ilustra un proceso típico que podría representarse mediante un Diagrama de Actividades:</p>
+                                <div class="code-example">
+                                    <pre>AlumnosDbHelper admin = new AlumnosDbHelper(this,"administracion",null,1);
 SQLiteDatabase bd = admin.getWritableDatabase();
 
 Cursor fila = bd.rawQuery("select codigo, nombre from alumnos", null);
@@ -422,61 +741,61 @@ if(fila.moveToFirst()) {
     grid.setAdapter(adapter);
 }
 bd.close();</pre>
+                                </div>
+                                <p><strong>Análisis detallado del flujo:</strong></p>
+                                <ol class="content-list">
+                                    <li><strong>Inicio del proceso:</strong> Se establece una conexión con la base de datos mediante la creación de un objeto AlumnosDbHelper y se obtiene una instancia de base de datos escribible.</li>
+                                    <li><strong>Ejecución de consulta:</strong> Se realiza una consulta SQL para obtener los datos de los alumnos utilizando el método rawQuery.</li>
+                                    <li><strong>Procesamiento de resultados:</strong>
+                                        <ul>
+                                            <li>Se crea una lista vacía y un adaptador para mostrar los datos.</li>
+                                            <li>Si la consulta devuelve resultados (if(fila.moveToFirst())), se itera a través de ellos y se agregan a la lista.</li>
+                                            <li>Si no hay resultados, se agregan valores predeterminados a la lista.</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Visualización de datos:</strong> Los datos se muestran en un GridView mediante el adaptador.</li>
+                                    <li><strong>Cierre del proceso:</strong> Finalmente, se cierra la conexión con la base de datos para liberar recursos.</li>
+                                </ol>
+                                <p>Este flujo podría representarse gráficamente como un Diagrama de Actividades con nodos para cada acción principal (conexión a BD, consulta, procesamiento) y ramas condicionales para manejar los diferentes escenarios (datos encontrados vs. no encontrados).</p>
                             </div>
-                            <p><strong>Análisis detallado del flujo:</strong></p>
-                            <ol class="content-list">
-                                <li><strong>Inicio del proceso:</strong> Se establece una conexión con la base de datos mediante la creación de un objeto AlumnosDbHelper y se obtiene una instancia de base de datos escribible.</li>
-                                <li><strong>Ejecución de consulta:</strong> Se realiza una consulta SQL para obtener los datos de los alumnos utilizando el método rawQuery.</li>
-                                <li><strong>Procesamiento de resultados:</strong>
-                                    <ul>
-                                        <li>Se crea una lista vacía y un adaptador para mostrar los datos.</li>
-                                        <li>Si la consulta devuelve resultados (if(fila.moveToFirst())), se itera a través de ellos y se agregan a la lista.</li>
-                                        <li>Si no hay resultados, se agregan valores predeterminados a la lista.</li>
-                                    </ul>
-                                </li>
-                                <li><strong>Visualización de datos:</strong> Los datos se muestran en un GridView mediante el adaptador.</li>
-                                <li><strong>Cierre del proceso:</strong> Finalmente, se cierra la conexión con la base de datos para liberar recursos.</li>
-                            </ol>
-                            <p>Este flujo podría representarse gráficamente como un Diagrama de Actividades con nodos para cada acción principal (conexión a BD, consulta, procesamiento) y ramas condicionales para manejar los diferentes escenarios (datos encontrados vs. no encontrados).</p>
-                        </div>
-                        
-                        <h5 class="subsection-title">2.3 Aplicaciones Avanzadas en Desarrollo de Software</h5>
-                        <div class="content-block">
-                            <p>Los Diagramas de Actividades encuentran aplicaciones significativas en diversas áreas del desarrollo de software:</p>
                             
-                            <p><strong>En el análisis de requisitos:</strong></p>
-                            <p>Permiten descomponer procesos de negocio complejos en pasos manejables, facilitando la identificación de requisitos funcionales y no funcionales. Por ejemplo, en un sistema de reservas de hotel, un diagrama de actividades podría mostrar el flujo completo desde la búsqueda de disponibilidad hasta la confirmación de la reserva.</p>
+                            <h5 class="subsection-title">2.3 Aplicaciones Avanzadas en Desarrollo de Software</h5>
+                            <div class="content-block">
+                                <p>Los Diagramas de Actividades encuentran aplicaciones significativas en diversas áreas del desarrollo de software:</p>
+                                
+                                <p><strong>En el análisis de requisitos:</strong></p>
+                                <p>Permiten descomponer procesos de negocio complejos en pasos manejables, facilitando la identificación de requisitos funcionales y no funcionales. Por ejemplo, en un sistema de reservas de hotel, un diagrama de actividades podría mostrar el flujo completo desde la búsqueda de disponibilidad hasta la confirmación de la reserva.</p>
+                                
+                                <p><strong>En el diseño de sistemas:</strong></p>
+                                <p>Ayudan a planificar la arquitectura de un sistema al mostrar cómo los diferentes componentes interactúan para completar un proceso. Esto es especialmente útil en sistemas distribuidos donde múltiples servicios deben coordinarse.</p>
+                                
+                                <p><strong>En la optimización de procesos:</strong></p>
+                                <p>Al visualizar todo el flujo de actividades, los equipos pueden identificar redundancias o pasos innecesarios que podrían simplificarse o automatizarse. Por ejemplo, en un proceso de aprobación de documentos, el diagrama podría revelar cuellos de botella donde las solicitudes suelen quedarse estancadas.</p>
+                                
+                                <p><strong>En la documentación de sistemas legacy:</strong></p>
+                                <p>Para sistemas antiguos con poca documentación, crear diagramas de actividades basados en el código existente ayuda a entender la lógica del negocio implementada, facilitando futuras modificaciones o migraciones.</p>
+                            </div>
                             
-                            <p><strong>En el diseño de sistemas:</strong></p>
-                            <p>Ayudan a planificar la arquitectura de un sistema al mostrar cómo los diferentes componentes interactúan para completar un proceso. Esto es especialmente útil en sistemas distribuidos donde múltiples servicios deben coordinarse.</p>
+                            <!-- SECCIÓN 3: DIAGRAMA DE SECUENCIA -->
+                            <h4 class="section-title">3. Diagrama de Secuencia</h4>
                             
-                            <p><strong>En la optimización de procesos:</strong></p>
-                            <p>Al visualizar todo el flujo de actividades, los equipos pueden identificar redundancias o pasos innecesarios que podrían simplificarse o automatizarse. Por ejemplo, en un proceso de aprobación de documentos, el diagrama podría revelar cuellos de botella donde las solicitudes suelen quedarse estancadas.</p>
+                            <h5 class="subsection-title">3.1 Definición y Propósito Fundamental</h5>
+                            <div class="content-block">
+                                <p>Un Diagrama de Secuencia es un tipo de diagrama de interacción que muestra cómo los objetos operan entre sí y en qué orden dentro de un escenario particular. Estos diagramas son especialmente valiosos para modelar el comportamiento de un sistema a lo largo del tiempo, mostrando la secuencia exacta de mensajes intercambiados entre los objetos.</p>
+                                <p>La importancia de los Diagramas de Secuencia radica en su capacidad para:</p>
+                                <ul class="content-list">
+                                    <li>Visualizar claramente el flujo de control en tiempo de ejecución</li>
+                                    <li>Identificar dependencias críticas entre componentes</li>
+                                    <li>Facilitar la detección de problemas de sincronización en sistemas concurrentes</li>
+                                    <li>Servir como base para la generación de casos de prueba</li>
+                                </ul>
+                            </div>
                             
-                            <p><strong>En la documentación de sistemas legacy:</strong></p>
-                            <p>Para sistemas antiguos con poca documentación, crear diagramas de actividades basados en el código existente ayuda a entender la lógica del negocio implementada, facilitando futuras modificaciones o migraciones.</p>
-                        </div>
-                        
-                        <!-- SECCIÓN 3: DIAGRAMA DE SECUENCIA -->
-                        <h4 class="section-title">3. Diagrama de Secuencia</h4>
-                        
-                        <h5 class="subsection-title">3.1 Definición y Propósito Fundamental</h5>
-                        <div class="content-block">
-                            <p>Un Diagrama de Secuencia es un tipo de diagrama de interacción que muestra cómo los objetos operan entre sí y en qué orden dentro de un escenario particular. Estos diagramas son especialmente valiosos para modelar el comportamiento de un sistema a lo largo del tiempo, mostrando la secuencia exacta de mensajes intercambiados entre los objetos.</p>
-                            <p>La importancia de los Diagramas de Secuencia radica en su capacidad para:</p>
-                            <ul class="content-list">
-                                <li>Visualizar claramente el flujo de control en tiempo de ejecución</li>
-                                <li>Identificar dependencias críticas entre componentes</li>
-                                <li>Facilitar la detección de problemas de sincronización en sistemas concurrentes</li>
-                                <li>Servir como base para la generación de casos de prueba</li>
-                            </ul>
-                        </div>
-                        
-                        <h5 class="subsection-title">3.2 Ejemplo Detallado (Proceso en Cafetería)</h5>
-                        <div class="content-block">
-                            <p>El siguiente texto en formato UML describe un proceso de pedido en una cafetería:</p>
-                            <div class="code-example">
-                                <pre>1. Cliente -> Cajero: Entra a la cafetería
+                            <h5 class="subsection-title">3.2 Ejemplo Detallado (Proceso en Cafetería)</h5>
+                            <div class="content-block">
+                                <p>El siguiente texto en formato UML describe un proceso de pedido en una cafetería:</p>
+                                <div class="code-example">
+                                    <pre>1. Cliente -> Cajero: Entra a la cafetería
 2. Cliente -> Cajero: Hace fila
 3. Cliente -> Cajero: Solicita un café
 4. Cajero -> Cliente: Informa precio
@@ -484,252 +803,253 @@ bd.close();</pre>
 6. Cajero -> Barista: Envía orden de café
 7. Barista -> Barista: Prepara el café
 8. Barista -> Cliente: Entrega el café</pre>
+                                </div>
+                                <p><strong>Análisis exhaustivo de las interacciones:</strong></p>
+                                <ol class="content-list">
+                                    <li><strong>Inicio de la interacción:</strong> El cliente inicia el proceso al entrar a la cafetería y hacer fila (pasos 1-2). Este paso representa la activación del caso de uso.</li>
+                                    <li><strong>Solicitud de servicio:</strong> El cliente formula su pedido al cajero (paso 3), lo que desencadena una serie de interacciones posteriores.</li>
+                                    <li><strong>Procesamiento del pedido:</strong>
+                                        <ul>
+                                            <li>El cajero responde con información sobre el precio (paso 4), estableciendo un contrato temporal entre las partes.</li>
+                                            <li>El cliente cumple con su parte al realizar el pago (paso 5).</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Coordinación interna:</strong> El cajero deriva la orden al barista (paso 6), demostrando cómo los roles se especializan en diferentes tareas dentro del sistema.</li>
+                                    <li><strong>Ejecución del servicio:</strong> El barista realiza el trabajo principal de preparación (paso 7), que representa la operación central del proceso.</li>
+                                    <li><strong>Finalización:</strong> El barista entrega el producto final al cliente (paso 8), completando satisfactoriamente la transacción.</li>
+                                </ol>
+                                <p>Este diagrama podría extenderse para mostrar casos alternativos, como cuando no hay inventario del producto solicitado, o para mostrar interacciones más complejas con sistemas de pago electrónico.</p>
                             </div>
-                            <p><strong>Análisis exhaustivo de las interacciones:</strong></p>
-                            <ol class="content-list">
-                                <li><strong>Inicio de la interacción:</strong> El cliente inicia el proceso al entrar a la cafetería y hacer fila (pasos 1-2). Este paso representa la activación del caso de uso.</li>
-                                <li><strong>Solicitud de servicio:</strong> El cliente formula su pedido al cajero (paso 3), lo que desencadena una serie de interacciones posteriores.</li>
-                                <li><strong>Procesamiento del pedido:</strong>
-                                    <ul>
-                                        <li>El cajero responde con información sobre el precio (paso 4), estableciendo un contrato temporal entre las partes.</li>
-                                        <li>El cliente cumple con su parte al realizar el pago (paso 5).</li>
-                                    </ul>
-                                </li>
-                                <li><strong>Coordinación interna:</strong> El cajero deriva la orden al barista (paso 6), demostrando cómo los roles se especializan en diferentes tareas dentro del sistema.</li>
-                                <li><strong>Ejecución del servicio:</strong> El barista realiza el trabajo principal de preparación (paso 7), que representa la operación central del proceso.</li>
-                                <li><strong>Finalización:</strong> El barista entrega el producto final al cliente (paso 8), completando satisfactoriamente la transacción.</li>
-                            </ol>
-                            <p>Este diagrama podría extenderse para mostrar casos alternativos, como cuando no hay inventario del producto solicitado, o para mostrar interacciones más complejas con sistemas de pago electrónico.</p>
-                        </div>
-                        
-                        <h5 class="subsection-title">3.3 Aplicaciones en Sistemas Modernos</h5>
-                        <div class="content-block">
-                            <p>Los Diagramas de Secuencia encuentran aplicaciones críticas en diversos contextos tecnológicos:</p>
                             
-                            <p><strong>En arquitecturas microservicios:</strong></p>
-                            <p>Permiten modelar cómo los diferentes servicios interactúan para completar una transacción distribuida. Por ejemplo, en un sistema de comercio electrónico, podrían mostrar la secuencia entre el servicio de catálogo, carrito de compras, procesamiento de pagos y envíos.</p>
+                            <h5 class="subsection-title">3.3 Aplicaciones en Sistemas Modernos</h5>
+                            <div class="content-block">
+                                <p>Los Diagramas de Secuencia encuentran aplicaciones críticas en diversos contextos tecnológicos:</p>
+                                
+                                <p><strong>En arquitecturas microservicios:</strong></p>
+                                <p>Permiten modelar cómo los diferentes servicios interactúan para completar una transacción distribuida. Por ejemplo, en un sistema de comercio electrónico, podrían mostrar la secuencia entre el servicio de catálogo, carrito de compras, procesamiento de pagos y envíos.</p>
+                                
+                                <p><strong>En sistemas de tiempo real:</strong></p>
+                                <p>Son esenciales para garantizar que las interacciones entre componentes cumplan con restricciones temporales estrictas. En sistemas de control industrial, por ejemplo, pueden mostrar los tiempos máximos permitidos entre la detección de un evento y la respuesta del sistema.</p>
+                                
+                                <p><strong>En el diseño de APIs:</strong></p>
+                                <p>Ayudan a documentar el flujo esperado de llamadas entre clientes y servidores, especificando el orden correcto de invocación de endpoints y las precondiciones para cada operación.</p>
+                                
+                                <p><strong>En la resolución de problemas:</strong></p>
+                                <p>Cuando ocurren errores en sistemas complejos, recrear el diagrama de secuencia del flujo fallido ayuda a identificar en qué punto exacto se produjo la falla y qué componentes estuvieron involucrados.</p>
+                            </div>
                             
-                            <p><strong>En sistemas de tiempo real:</strong></p>
-                            <p>Son esenciales para garantizar que las interacciones entre componentes cumplan con restricciones temporales estrictas. En sistemas de control industrial, por ejemplo, pueden mostrar los tiempos máximos permitidos entre la detección de un evento y la respuesta del sistema.</p>
+                            <!-- SECCIÓN 4: DIAGRAMA DE OBJETOS -->
+                            <h4 class="section-title">4. Diagrama de Objetos</h4>
                             
-                            <p><strong>En el diseño de APIs:</strong></p>
-                            <p>Ayudan a documentar el flujo esperado de llamadas entre clientes y servidores, especificando el orden correcto de invocación de endpoints y las precondiciones para cada operación.</p>
+                            <h5 class="subsection-title">4.1 Conceptos Fundamentales</h5>
+                            <div class="content-block">
+                                <p>Un Diagrama de Objetos es una representación estática que muestra instancias específicas de clases en un momento particular de la ejecución del sistema. A diferencia del Diagrama de Clases que muestra las plantillas, este diagrama presenta objetos reales con sus valores concretos, ofreciendo una "instantánea" del sistema en funcionamiento.</p>
+                                <p>Las características principales incluyen:</p>
+                                <ul class="content-list">
+                                    <li>Muestra objetos (instancias de clases) con sus atributos poblados</li>
+                                    <li>Ilustra enlaces temporales entre objetos durante la ejecución</li>
+                                    <li>Es especialmente útil para entender escenarios complejos de interacción</li>
+                                </ul>
+                            </div>
                             
-                            <p><strong>En la resolución de problemas:</strong></p>
-                            <p>Cuando ocurren errores en sistemas complejos, recrear el diagrama de secuencia del flujo fallido ayuda a identificar en qué punto exacto se produjo la falla y qué componentes estuvieron involucrados.</p>
-                        </div>
-                        
-                        <!-- SECCIÓN 4: DIAGRAMA DE OBJETOS -->
-                        <h4 class="section-title">4. Diagrama de Objetos</h4>
-                        
-                        <h5 class="subsection-title">4.1 Conceptos Fundamentales</h5>
-                        <div class="content-block">
-                            <p>Un Diagrama de Objetos es una representación estática que muestra instancias específicas de clases en un momento particular de la ejecución del sistema. A diferencia del Diagrama de Clases que muestra las plantillas, este diagrama presenta objetos reales con sus valores concretos, ofreciendo una "instantánea" del sistema en funcionamiento.</p>
-                            <p>Las características principales incluyen:</p>
-                            <ul class="content-list">
-                                <li>Muestra objetos (instancias de clases) con sus atributos poblados</li>
-                                <li>Ilustra enlaces temporales entre objetos durante la ejecución</li>
-                                <li>Es especialmente útil para entender escenarios complejos de interacción</li>
-                            </ul>
-                        </div>
-                        
-                        <h5 class="subsection-title">4.2 Ejemplo Ampliado (Sistema de Gestión de Alumnos)</h5>
-                        <div class="content-block">
-                            <p>Basándonos en el código SQLite anterior, podemos identificar los siguientes objetos clave:</p>
+                            <h5 class="subsection-title">4.2 Ejemplo Ampliado (Sistema de Gestión de Alumnos)</h5>
+                            <div class="content-block">
+                                <p>Basándonos en el código SQLite anterior, podemos identificar los siguientes objetos clave:</p>
+                                
+                                <p><strong>Objeto admin (AlumnosDbHelper):</strong></p>
+                                <ul class="content-list">
+                                    <li><strong>Atributos:</strong>
+                                        <ul>
+                                            <li>context: Referencia al contexto de la aplicación Android</li>
+                                            <li>databaseName: "administracion"</li>
+                                            <li>version: 1</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Responsabilidades:</strong>
+                                        <ul>
+                                            <li>Gestionar la creación y actualización de la base de datos</li>
+                                            <li>Proporcionar métodos para operaciones CRUD</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                
+                                <p><strong>Objeto bd (SQLiteDatabase):</strong></p>
+                                <ul class="content-list">
+                                    <li><strong>Estado:</strong>
+                                        <ul>
+                                            <li>Modo: escritura (por getWritableDatabase())</li>
+                                            <li>Tablas activas: "alumnos"</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Operaciones realizadas:</strong>
+                                        <ul>
+                                            <li>Ejecución de consulta RAW</li>
+                                            <li>Cierre de conexión</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                
+                                <p><strong>Objeto fila (Cursor):</strong></p>
+                                <ul class="content-list">
+                                    <li><strong>Contenido:</strong>
+                                        <ul>
+                                            <li>Resultados de la consulta "select codigo, nombre from alumnos"</li>
+                                            <li>Posición actual: gestionada por moveToFirst() y moveToNext()</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                
+                                <p><strong>Objeto list (ArrayList&lt;String&gt;):</strong></p>
+                                <ul class="content-list">
+                                    <li><strong>Contenido típico:</strong>
+                                        <ul>
+                                            <li>["A001", "Juan Pérez", "A002", "María García"] en caso de éxito</li>
+                                            <li>["sin datos", "sin datos"] en caso de fallo</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                
+                                <p><strong>Objeto adapter (ArrayAdapter&lt;String&gt;):</strong></p>
+                                <ul class="content-list">
+                                    <li><strong>Configuración:</strong>
+                                        <ul>
+                                            <li>Layout: simple_spinner_item</li>
+                                            <li>Contexto: aplicación actual</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Relación:</strong>
+                                        <ul>
+                                            <li>Conecta list con grid</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                
+                                <p><strong>Objeto grid (GridView):</strong></p>
+                                <ul class="content-list">
+                                    <li><strong>Estado:</strong>
+                                        <ul>
+                                            <li>Adaptador asociado: adapter</li>
+                                            <li>Datos mostrados: dependientes del estado de list</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
                             
-                            <p><strong>Objeto admin (AlumnosDbHelper):</strong></p>
-                            <ul class="content-list">
-                                <li><strong>Atributos:</strong>
-                                    <ul>
-                                        <li>context: Referencia al contexto de la aplicación Android</li>
-                                        <li>databaseName: "administracion"</li>
-                                        <li>version: 1</li>
-                                    </ul>
-                                </li>
-                                <li><strong>Responsabilidades:</strong>
-                                    <ul>
-                                        <li>Gestionar la creación y actualización de la base de datos</li>
-                                        <li>Proporcionar métodos para operaciones CRUD</li>
-                                    </ul>
-                                </li>
-                            </ul>
+                            <h5 class="subsection-title">4.3 Relación con Otros Diagramas</h5>
+                            <div class="content-block">
+                                <p>El Diagrama de Objetos complementa otros diagramas UML de varias formas:</p>
+                                
+                                <p><strong>Con Diagramas de Clases:</strong></p>
+                                <p>Mientras el Diagrama de Clases muestra las posibles relaciones (cardinalidades, herencias), el Diagrama de Objetos muestra cómo se materializan esas relaciones en tiempo de ejecución con instancias específicas.</p>
+                                
+                                <p><strong>Con Diagramas de Secuencia:</strong></p>
+                                <p>El Diagrama de Objetos puede servir para mostrar el estado del sistema antes o después de una interacción representada en un Diagrama de Secuencia.</p>
+                                
+                                <p><strong>Con Diagramas de Estados:</strong></p>
+                                <p>Puede capturar los objetos relevantes cuando el sistema está en un estado particular.</p>
+                            </div>
                             
-                            <p><strong>Objeto bd (SQLiteDatabase):</strong></p>
-                            <ul class="content-list">
-                                <li><strong>Estado:</strong>
-                                    <ul>
-                                        <li>Modo: escritura (por getWritableDatabase())</li>
-                                        <li>Tablas activas: "alumnos"</li>
-                                    </ul>
-                                </li>
-                                <li><strong>Operaciones realizadas:</strong>
-                                    <ul>
-                                        <li>Ejecución de consulta RAW</li>
-                                        <li>Cierre de conexión</li>
-                                    </ul>
-                                </li>
-                            </ul>
+                            <!-- SECCIÓN 5: DIAGRAMA DE GESTIÓN -->
+                            <h4 class="section-title">5. Diagrama de Gestión (Flujo de Cajas)</h4>
                             
-                            <p><strong>Objeto fila (Cursor):</strong></p>
-                            <ul class="content-list">
-                                <li><strong>Contenido:</strong>
-                                    <ul>
-                                        <li>Resultados de la consulta "select codigo, nombre from alumnos"</li>
-                                        <li>Posición actual: gestionada por moveToFirst() y moveToNext()</li>
-                                    </ul>
-                                </li>
-                            </ul>
+                            <h5 class="subsection-title">5.1 Explicación Profunda</h5>
+                            <div class="content-block">
+                                <p>El Diagrama de Gestión presentado modela un proceso crítico en sistemas de punto de venta: el cierre coordinado de múltiples cajas registradoras. Este tipo de diagrama combina elementos de flujogramas con especificaciones temporales y de negocio.</p>
+                                
+                                <p><strong>Características clave del proceso:</strong></p>
+                                <ul class="content-list">
+                                    <li><strong>Restricción temporal:</strong> Todo el proceso debe completarse antes de las 12:00 PM</li>
+                                    <li><strong>Coordinación:</strong> No todas las cajas pueden cerrar simultáneamente</li>
+                                    <li><strong>Prioridades:</strong> Se debe garantizar que al menos una caja permanezca activa</li>
+                                    <li><strong>Temporización:</strong> Intervalos de 15 minutos entre cierres</li>
+                                </ul>
+                            </div>
                             
-                            <p><strong>Objeto list (ArrayList&lt;String&gt;):</strong></p>
-                            <ul class="content-list">
-                                <li><strong>Contenido típico:</strong>
-                                    <ul>
-                                        <li>["A001", "Juan Pérez", "A002", "María García"] en caso de éxito</li>
-                                        <li>["sin datos", "sin datos"] en caso de fallo</li>
-                                    </ul>
-                                </li>
-                            </ul>
+                            <h5 class="subsection-title">5.2 Análisis de Componentes</h5>
+                            <div class="content-block">
+                                <p>El sistema involucra los siguientes actores y componentes:</p>
+                                
+                                <p><strong>Servidor Central:</strong></p>
+                                <ul class="content-list">
+                                    <li><strong>Funciones principales:</strong>
+                                        <ul>
+                                            <li>Monitorear estado de todas las cajas (ocupadas/libres)</li>
+                                            <li>Orquestar el proceso de cierre</li>
+                                            <li>Implementar las reglas de negocio (tiempos de espera, cajas mínimas)</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                
+                                <p><strong>Cajas Registradoras (1-4):</strong></p>
+                                <ul class="content-list">
+                                    <li><strong>Estados posibles:</strong>
+                                        <ul>
+                                            <li>Libre: disponible para cerrarse</li>
+                                            <li>Ocupada: atendiendo cliente, no puede cerrarse</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Procesos individuales:</strong>
+                                        <ul>
+                                            <li>Corte de efectivo/tarjeta</li>
+                                            <li>Confirmación de cierre</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                
+                                <p><strong>Protocolos de Comunicación:</strong></p>
+                                <ol class="content-list">
+                                    <li><strong>Solicitud-Estado:</strong> El servidor consulta periódicamente el estado de cada caja</li>
+                                    <li><strong>Iniciar-Cierre:</strong> Cuando una caja está libre, el servidor inicia su proceso de cierre</li>
+                                    <li><strong>Confirmación:</strong> Cada caja notifica al servidor cuando completa su cierre</li>
+                                </ol>
+                            </div>
                             
-                            <p><strong>Objeto adapter (ArrayAdapter&lt;String&gt;):</strong></p>
-                            <ul class="content-list">
-                                <li><strong>Configuración:</strong>
-                                    <ul>
-                                        <li>Layout: simple_spinner_item</li>
-                                        <li>Contexto: aplicación actual</li>
-                                    </ul>
-                                </li>
-                                <li><strong>Relación:</strong>
-                                    <ul>
-                                        <li>Conecta list con grid</li>
-                                    </ul>
-                                </li>
-                            </ul>
+                            <h5 class="subsection-title">5.3 Casos de Uso Detallados</h5>
+                            <div class="content-block">
+                                <p><strong>Escenario Normal:</strong></p>
+                                <ol class="content-list">
+                                    <li>A las 11:30 AM, el sistema inicia el proceso</li>
+                                    <li>Verifica que las cajas 1 y 2 están libres, mientras 3 y 4 están ocupadas</li>
+                                    <li>Ordena cierre a la caja 1, que completa el proceso a las 11:45 AM</li>
+                                    <li>A las 11:45 AM, verifica nuevamente estados:
+                                        <ul>
+                                            <li>Caja 2 sigue libre → inicia su cierre</li>
+                                            <li>Caja 3 ahora está libre → programada para 12:00 PM</li>
+                                        </ul>
+                                    </li>
+                                    <li>A las 12:00 PM, cierra la última caja disponible</li>
+                                </ol>
+                                
+                                <p><strong>Escenario de Contingencia:</strong></p>
+                                <ul class="content-list">
+                                    <li>Si a las 11:50 AM todas las cajas excepto una están ocupadas:
+                                        <ul>
+                                            <li>El sistema espera hasta que al menos dos estén libres</li>
+                                            <li>Prioriza mantener una caja activa hasta el último momento</li>
+                                        </ul>
+                                    </li>
+                                    <li>Si alguna caja no responde:
+                                        <ul>
+                                            <li>Implementa timeout después de 3 intentos</li>
+                                            <li>Registra incidencia para revisión manual</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
                             
-                            <p><strong>Objeto grid (GridView):</strong></p>
-                            <ul class="content-list">
-                                <li><strong>Estado:</strong>
-                                    <ul>
-                                        <li>Adaptador asociado: adapter</li>
-                                        <li>Datos mostrados: dependientes del estado de list</li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        
-                        <h5 class="subsection-title">4.3 Relación con Otros Diagramas</h5>
-                        <div class="content-block">
-                            <p>El Diagrama de Objetos complementa otros diagramas UML de varias formas:</p>
-                            
-                            <p><strong>Con Diagramas de Clases:</strong></p>
-                            <p>Mientras el Diagrama de Clases muestra las posibles relaciones (cardinalidades, herencias), el Diagrama de Objetos muestra cómo se materializan esas relaciones en tiempo de ejecución con instancias específicas.</p>
-                            
-                            <p><strong>Con Diagramas de Secuencia:</strong></p>
-                            <p>El Diagrama de Objetos puede servir para mostrar el estado del sistema antes o después de una interacción representada en un Diagrama de Secuencia.</p>
-                            
-                            <p><strong>Con Diagramas de Estados:</strong></p>
-                            <p>Puede capturar los objetos relevantes cuando el sistema está en un estado particular.</p>
-                        </div>
-                        
-                        <!-- SECCIÓN 5: DIAGRAMA DE GESTIÓN -->
-                        <h4 class="section-title">5. Diagrama de Gestión (Flujo de Cajas)</h4>
-                        
-                        <h5 class="subsection-title">5.1 Explicación Profunda</h5>
-                        <div class="content-block">
-                            <p>El Diagrama de Gestión presentado modela un proceso crítico en sistemas de punto de venta: el cierre coordinado de múltiples cajas registradoras. Este tipo de diagrama combina elementos de flujogramas con especificaciones temporales y de negocio.</p>
-                            
-                            <p><strong>Características clave del proceso:</strong></p>
-                            <ul class="content-list">
-                                <li><strong>Restricción temporal:</strong> Todo el proceso debe completarse antes de las 12:00 PM</li>
-                                <li><strong>Coordinación:</strong> No todas las cajas pueden cerrar simultáneamente</li>
-                                <li><strong>Prioridades:</strong> Se debe garantizar que al menos una caja permanezca activa</li>
-                                <li><strong>Temporización:</strong> Intervalos de 15 minutos entre cierres</li>
-                            </ul>
-                        </div>
-                        
-                        <h5 class="subsection-title">5.2 Análisis de Componentes</h5>
-                        <div class="content-block">
-                            <p>El sistema involucra los siguientes actores y componentes:</p>
-                            
-                            <p><strong>Servidor Central:</strong></p>
-                            <ul class="content-list">
-                                <li><strong>Funciones principales:</strong>
-                                    <ul>
-                                        <li>Monitorear estado de todas las cajas (ocupadas/libres)</li>
-                                        <li>Orquestar el proceso de cierre</li>
-                                        <li>Implementar las reglas de negocio (tiempos de espera, cajas mínimas)</li>
-                                    </ul>
-                                </li>
-                            </ul>
-                            
-                            <p><strong>Cajas Registradoras (1-4):</strong></p>
-                            <ul class="content-list">
-                                <li><strong>Estados posibles:</strong>
-                                    <ul>
-                                        <li>Libre: disponible para cerrarse</li>
-                                        <li>Ocupada: atendiendo cliente, no puede cerrarse</li>
-                                    </ul>
-                                </li>
-                                <li><strong>Procesos individuales:</strong>
-                                    <ul>
-                                        <li>Corte de efectivo/tarjeta</li>
-                                        <li>Confirmación de cierre</li>
-                                    </ul>
-                                </li>
-                            </ul>
-                            
-                            <p><strong>Protocolos de Comunicación:</strong></p>
-                            <ol class="content-list">
-                                <li><strong>Solicitud-Estado:</strong> El servidor consulta periódicamente el estado de cada caja</li>
-                                <li><strong>Iniciar-Cierre:</strong> Cuando una caja está libre, el servidor inicia su proceso de cierre</li>
-                                <li><strong>Confirmación:</strong> Cada caja notifica al servidor cuando completa su cierre</li>
-                            </ol>
-                        </div>
-                        
-                        <h5 class="subsection-title">5.3 Casos de Uso Detallados</h5>
-                        <div class="content-block">
-                            <p><strong>Escenario Normal:</strong></p>
-                            <ol class="content-list">
-                                <li>A las 11:30 AM, el sistema inicia el proceso</li>
-                                <li>Verifica que las cajas 1 y 2 están libres, mientras 3 y 4 están ocupadas</li>
-                                <li>Ordena cierre a la caja 1, que completa el proceso a las 11:45 AM</li>
-                                <li>A las 11:45 AM, verifica nuevamente estados:
-                                    <ul>
-                                        <li>Caja 2 sigue libre → inicia su cierre</li>
-                                        <li>Caja 3 ahora está libre → programada para 12:00 PM</li>
-                                    </ul>
-                                </li>
-                                <li>A las 12:00 PM, cierra la última caja disponible</li>
-                            </ol>
-                            
-                            <p><strong>Escenario de Contingencia:</strong></p>
-                            <ul class="content-list">
-                                <li>Si a las 11:50 AM todas las cajas excepto una están ocupadas:
-                                    <ul>
-                                        <li>El sistema espera hasta que al menos dos estén libres</li>
-                                        <li>Prioriza mantener una caja activa hasta el último momento</li>
-                                    </ul>
-                                </li>
-                                <li>Si alguna caja no responde:
-                                    <ul>
-                                        <li>Implementa timeout después de 3 intentos</li>
-                                        <li>Registra incidencia para revisión manual</li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        
-                        <!-- SECCIÓN 6: CONCLUSIÓN -->
-                        <h4 class="section-title">6. Conclusión</h4>
-                        <div class="content-block">
-                            <p>Los diagramas analizados representan herramientas indispensables en el arsenal de cualquier ingeniero de software. Su importancia trasciende las fases iniciales de diseño, extendiéndose a la implementación, prueba y mantenimiento de sistemas complejos.</p>
-                            
-                            <p><strong>Diagrama de Actividades:</strong> Proporciona una visión macro de los procesos, ideal para entender flujos de trabajo completos y optimizar procedimientos. Su aplicación en el análisis de requisitos y diseño de sistemas asegura que todos los escenarios posibles sean considerados desde etapas tempranas.</p>
-                            
-                            <p><strong>Diagrama de Secuencia:</strong> Ofrece una perspectiva temporal detallada de las interacciones entre componentes. Es particularmente valioso en sistemas distribuidos modernos, donde entender el orden exacto de las operaciones puede ser la diferencia entre un sistema robusto y uno con condiciones de carrera difíciles de depurar.</p>
-                            
-                            <p><strong>Diagrama de Objetos:</strong> Brinda instantáneas valiosas del sistema en ejecución, facilitando la depuración y la comprensión de estados complejos. Su relación con los diagramas de clases ayuda a puentear la brecha entre diseño estático y comportamiento dinámico.</p>
-                            
-                            <p><strong>Diagrama de Gestión:</strong> Para procesos operativos complejos con múltiples restricciones, como el ejemplo del cierre de cajas, estos diagramas son insustituibles. Permiten modelar no solo el flujo ideal, sino también manejar casos excepcionales y garantizar el cumplimiento de políticas de negocio críticas.</p>
+                            <!-- SECCIÓN 6: CONCLUSIÓN -->
+                            <h4 class="section-title">6. Conclusión</h4>
+                            <div class="content-block">
+                                <p>Los diagramas analizados representan herramientas indispensables en el arsenal de cualquier ingeniero de software. Su importancia trasciende las fases iniciales de diseño, extendiéndose a la implementación, prueba y mantenimiento de sistemas complejos.</p>
+                                
+                                <p><strong>Diagrama de Actividades:</strong> Proporciona una visión macro de los procesos, ideal para entender flujos de trabajo completos y optimizar procedimientos. Su aplicación en el análisis de requisitos y diseño de sistemas asegura que todos los escenarios posibles sean considerados desde etapas tempranas.</p>
+                                
+                                <p><strong>Diagrama de Secuencia:</strong> Ofrece una perspectiva temporal detallada de las interacciones entre componentes. Es particularmente valioso en sistemas distribuidos modernos, donde entender el orden exacto de las operaciones puede ser la diferencia entre un sistema robusto y uno con condiciones de carrera difíciles de depurar.</p>
+                                
+                                <p><strong>Diagrama de Objetos:</strong> Brinda instantáneas valiosas del sistema en ejecución, facilitando la depuración y la comprensión de estados complejos. Su relación con los diagramas de clases ayuda a puentear la brecha entre diseño estático y comportamiento dinámico.</p>
+                                
+                                <p><strong>Diagrama de Gestión:</strong> Para procesos operativos complejos con múltiples restricciones, como el ejemplo del cierre de cajas, estos diagramas son insustituibles. Permiten modelar no solo el flujo ideal, sino también manejar casos excepcionales y garantizar el cumplimiento de políticas de negocio críticas.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -737,9 +1057,9 @@ bd.close();</pre>
         </div>
     </section>
 
-    <footer>
+    <footer class="materia-footer">
         <div class="container">
-            <p>&copy; 2023 Omar - E-Portafolio. Todos los derechos reservados.</p>
+            <p>&copy; 2025 Víctor Martínez - E-Portafolio. Todos los derechos reservados.</p>
         </div>
     </footer>
 </body>

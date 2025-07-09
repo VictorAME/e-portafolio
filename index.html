@@ -3,80 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Omar - E-Portafolio</title>
+    <title>Víctor Martínez | Portafolio Profesional</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../CSS/index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
+    <header class="glass-header">
         <div class="container">
-            <h1>Omar <span>E-Portafolio</span></h1>
+            <div class="logo">
+                <span class="logo-icon">VM</span>
+                <h1>Víctor <span>Martínez</span></h1>
+            </div>
             <nav>
                 <ul>
-                    <li><a href="#about">Inicio</a></li>
-                    <li><a href="HTML/materia1.html">Analisis</a></li>
-                    <li><a href="HTML/materia2.html">Moviles</a></li>
-                    <li><a href="index.html#contacto">Contacto</a></li>
-                    <li><a href="HTML/yo.html">Sobre mí</a></li>
+                    <li><a href="#hero" class="active">Inicio</a></li>
+                    <li><a href="#about">Sobre mí</a></li>
+                    <li><a href="HTML/materia1.html">Análisis</a></li>
+                    <li><a href="HTML/materia2.html">Móviles</a></li>
                 </ul>
             </nav>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
         </div>
     </header>
 
-    <section id="hero">
+    <section id="hero" class="hero-section">
         <div class="container">
-            <h2>Bienvenido a mi portafolio académico</h2>
-            <p>Estudiante de la Universidad Jean Piaget</p>
-        </div>
-    </section>
-
-    <section id="about" class="container">
-        <div class="about-content">
-            <div class="about-text">
-                <h2>Sobre mí</h2>
-                <p>¡Hola! Soy Omar, estudiante apasionado por la tecnología y el desarrollo de software en la Universidad Jean Piaget. En este portafolio encontrarás mis trabajos y proyectos académicos organizados por materia.</p>
-                <a href="HTML/yo.html" class="btn">Más sobre mí</a>
+            <div class="hero-content">
+                <h2 class="hero-title">Víctor Alejandro Martínez Espinoza</h2>
+                <h3 class="hero-subtitle">Desarrollador & Diseñador</h3>
+                <p class="hero-text">Creando soluciones digitales innovadoras con pasión y profesionalismo.</p>
+                <div class="hero-buttons">
+                    <a href="HTML/materia1.html" class="btn btn-primary">
+                        <i class="fas fa-chart-line"></i> Ver Análisis
+                    </a>
+                    <a href="HTML/materia2.html" class="btn btn-secondary">
+                        <i class="fas fa-mobile-alt"></i> Proyectos Móviles
+                    </a>
+                </div>
             </div>
-            <div class="profile-img">
-                <img src="../IMG/foto.jpg" alt="Foto de perfil" class="profile-pic">
-            </div>
-        </div>
-    </section>
-
-    <section id="materia" class="container">
-        <h2>Mis Materias</h2>
-        <div class="materia-grid">
-            <div class="materia-card">
-                <i class="fas fa-chart-line"></i>
-                <h3>Análisis</h3>
-                <p>Trabajos y proyectos de la materia de Análisis.</p>
-                <a href="HTML/materia1.html" class="btn">Ver trabajos</a>
-            </div>
-            <div class="materia-card">
-                <i class="fas fa-mobile-alt"></i>
-                <h3>Móviles 2</h3>
-                <p>Proyectos de desarrollo móvil con Android Studio.</p>
-                <a href="HTML/materia2.html" class="btn">Ver trabajos</a>
+            <div class="hero-image">
+                <div class="image-frame">
+                    <img src="/IMG/victor.png" alt="Víctor Martínez" class="profile-photo">
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="contacto" class="container">
-        <h2>Contacto</h2>
-        <div class="contact-info">
-            <p><i class="fas fa-envelope"></i> <strong>Correo:</strong> omar@example.com</p>
-            <p><i class="fas fa-phone"></i> <strong>Teléfono:</strong> +52 123 456 7890</p>
-            <div class="social-links">
-                <a href="#" class="social-link"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                <a href="#" class="social-link"><i class="fab fa-github"></i> GitHub</a>
-            </div>
-        </div>
-    </section>
-
-    <footer>
+    <section id="about" class="about-section">
         <div class="container">
-            <p>&copy; 2023 Omar - E-Portafolio. Todos los derechos reservados.</p>
+            <div class="section-header">
+                <h2 class="section-title">Sobre <span>Mí</span></h2>
+                <p class="section-subtitle">Conoce más sobre mi trayectoria profesional</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Soy Víctor Alejandro Martínez Espinoza, un profesional apasionado por la tecnología y el diseño. Con formación en la Universidad Jean Piaget, me especializo en crear experiencias digitales memorables.</p>
+                    <p>Mi enfoque combina habilidades técnicas sólidas con un ojo atento al detalle estético, lo que me permite desarrollar soluciones que no solo funcionan perfectamente, sino que también cautivan a los usuarios.</p>
+                    <div class="quick-links">
+                        <a href="HTML/materia1.html" class="quick-link">
+                            <i class="fas fa-chart-line"></i> Trabajos de Análisis
+                        </a>
+                        <a href="HTML/materia2.html" class="quick-link">
+                            <i class="fas fa-mobile-alt"></i> Proyectos Móviles
+                        </a>
+                    </div>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="15">0</div>
+                        <div class="stat-text">Proyectos completados</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="3">0</div>
+                        <div class="stat-text">Años de experiencia</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="10">0</div>
+                        <div class="stat-text">Clientes satisfechos</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="5">0</div>
+                        <div class="stat-text">Certificaciones</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="materias" class="materias-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Mis <span>Materias</span></h2>
+                <p class="section-subtitle">Acceso rápido a mis trabajos académicos</p>
+            </div>
+            <div class="materias-grid">
+                <div class="materia-card">
+                    <div class="materia-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Análisis</h3>
+                    <p>Trabajos y proyectos de la materia de Análisis.</p>
+                    <a href="HTML/materia1.html" class="btn btn-primary">Ver trabajos</a>
+                </div>
+                <div class="materia-card">
+                    <div class="materia-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Móviles 2</h3>
+                    <p>Proyectos de desarrollo móvil con Android Studio.</p>
+                    <a href="HTML/materia2.html" class="btn btn-primary">Ver trabajos</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="logo">
+                        <span class="logo-icon">VM</span>
+                        <h2>Víctor <span>Martínez</span></h2>
+                    </div>
+                    <p>Desarrollador y diseñador especializado en crear experiencias digitales excepcionales.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Enlaces rápidos</h3>
+                    <ul>
+                        <li><a href="#hero">Inicio</a></li>
+                        <li><a href="#about">Sobre mí</a></li>
+                        <li><a href="HTML/materia1.html">Análisis</a></li>
+                        <li><a href="HTML/materia2.html">Móviles</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Víctor Alejandro Martínez Espinoza. Todos los derechos reservados.</p>
+            </div>
         </div>
     </footer>
+
+    <script src="../JS/main.js"></script>
 </body>
 </html>

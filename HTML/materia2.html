@@ -3,74 +3,312 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Móviles 2 - Omar E-Portafolio</title>
+    <title>Móviles 2 - Víctor E-Portafolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../CSS/index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Estilos específicos para la página de materia */
+        :root {
+            --materia-primary: #4CAF50;
+            --materia-secondary: #2E7D32;
+            --materia-accent: #FFC107;
+            --materia-light: #F7FAFC;
+            --materia-dark: #263238;
+            --materia-gray: #607D8B;
+        }
+        
+        .materia-header {
+            background: linear-gradient(135deg, var(--materia-primary), var(--materia-secondary));
+            color: white;
+            padding: 100px 0 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .materia-header::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            top: -50px;
+            right: -50px;
+        }
+        
+        .materia-header::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 193, 7, 0.1);
+            border-radius: 50%;
+            bottom: -30px;
+            left: -30px;
+        }
+        
+        .materia-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .materia-header h1 a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .materia-header h1 a:hover {
+            color: var(--materia-accent);
+        }
+        
+        .materia-header h1 span {
+            font-weight: 300;
+            opacity: 0.9;
+        }
+        
+        .materia-nav {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .materia-nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+        
+        .materia-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+        
+        .materia-nav ul li a {
+            color: var(--materia-dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 5px 0;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .materia-nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--materia-primary);
+            bottom: 0;
+            left: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .materia-nav ul li a:hover::after,
+        .materia-nav ul li a.active::after {
+            width: 100%;
+        }
+        
+        .materia-nav ul li a:hover,
+        .materia-nav ul li a.active {
+            color: var(--materia-primary);
+        }
+        
+        .materia-content {
+            padding: 60px 0;
+            background: var(--materia-light);
+        }
+        
+        .materia-content h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: var(--materia-dark);
+            position: relative;
+        }
+        
+        .materia-content h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--materia-primary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .parcial-section {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .parcial-section h3 {
+            font-size: 1.5rem;
+            color: var(--materia-primary);
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .project-card {
+            display: flex;
+            gap: 20px;
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--materia-primary);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border-left-color: var(--materia-accent);
+        }
+        
+        .project-icon {
+            font-size: 1.8rem;
+            color: var(--materia-primary);
+            min-width: 50px;
+            display: flex;
+            justify-content: center;
+            padding-top: 5px;
+        }
+        
+        .project-card:hover .project-icon {
+            color: var(--materia-accent);
+            transform: rotate(10deg);
+        }
+        
+        .project-content {
+            flex: 1;
+        }
+        
+        .project-content h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--materia-dark);
+        }
+        
+        .project-content p {
+            color: var(--materia-gray);
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: var(--materia-primary);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: var(--materia-secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+        }
+        
         /* Estilos para el documento completo */
         .full-document {
             background: white;
             border-radius: 8px;
-            padding: 2rem;
-            margin: 2rem 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+            font-family: 'Poppins', sans-serif;
             line-height: 1.7;
+            color: var(--materia-dark);
         }
         
         .document-header {
             text-align: center;
-            margin-bottom: 2rem;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 1rem;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--materia-primary);
         }
         
         .document-title {
-            color: #2c3e50;
+            color: var(--materia-dark);
             font-size: 1.8rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
         }
         
         .document-subtitle {
-            color: #3498db;
+            color: var(--materia-primary);
             font-size: 1.3rem;
-            font-weight: 500;
+            font-weight: 600;
+            margin-bottom: 5px;
         }
         
         .section-title {
-            color: #2c3e50;
+            color: var(--materia-dark);
             font-size: 1.5rem;
-            margin: 2rem 0 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid #eaeaea;
+            margin: 30px 0 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #eee;
+            font-family: 'Montserrat', sans-serif;
         }
         
         .subsection-title {
-            color: #3498db;
+            color: var(--materia-primary);
             font-size: 1.2rem;
-            margin: 1.5rem 0 0.8rem;
+            margin: 20px 0 10px;
+            font-weight: 600;
         }
         
         .content-block {
-            margin-bottom: 1.5rem;
+            margin-bottom: 20px;
             text-align: justify;
         }
         
         .content-list {
-            padding-left: 1.8rem;
-            margin: 1rem 0;
+            padding-left: 20px;
+            margin: 15px 0;
         }
         
         .content-list li {
-            margin-bottom: 0.7rem;
+            margin-bottom: 10px;
+            line-height: 1.6;
         }
         
         .code-example {
-            background: #f5f5f5;
-            padding: 1rem;
+            background: #f8f9fa;
+            padding: 15px;
             border-radius: 6px;
-            border-left: 4px solid #3498db;
-            margin: 1rem 0;
+            border-left: 4px solid var(--materia-primary);
+            margin: 15px 0;
             font-family: 'Courier New', monospace;
             overflow-x: auto;
         }
@@ -78,237 +316,349 @@
         .code-example pre {
             margin: 0;
             white-space: pre-wrap;
+            line-height: 1.5;
         }
         
+        .materia-footer {
+            background: var(--materia-dark);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 60px;
+        }
+        
+        .materia-footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
         @media (max-width: 768px) {
-            .full-document {
-                padding: 1rem;
+            .materia-header h1 {
+                font-size: 2rem;
+            }
+            
+            .materia-nav .container {
+                flex-direction: column;
+            }
+            
+            .materia-nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .project-card {
+                flex-direction: column;
+            }
+            
+            .project-icon {
+                margin-bottom: 15px;
             }
             
             .document-title {
                 font-size: 1.5rem;
             }
+        }
+        
+        @media (max-width: 576px) {
+            .materia-header {
+                padding: 80px 0 40px;
+            }
             
-            .section-title {
-                font-size: 1.3rem;
+            .materia-content h2 {
+                font-size: 1.7rem;
+            }
+            
+            .parcial-section {
+                padding: 20px;
+            }
+            
+            .full-document {
+                padding: 20px;
             }
         }
     </style>
 </head>
 <body>
-    <header>
+    <header class="materia-header">
         <div class="container">
-            <h1><a href="index.html">Omar</a> <span>/ Móviles 2</span></h1>
-            <nav>
-                <ul>
-                    <li><a href="../index.html#about">Inicio</a></li>
-                    <li><a href="materia1.html">Analisis</a></li>
-                    <li><a href="materia2.html">Moviles</a></li>
-                    <li><a href="../index.html#contacto">Contacto</a></li>
-                    <li><a href="yo.html">Sobre mí</a></li>
-                </ul>
-            </nav>
+            <h1><a href="../index.html">Víctor Martínez</a> <span>/ Móviles 2</span></h1>
         </div>
     </header>
 
-    <section id="materia-content" class="container">
-        <h2>Trabajos de Móviles 2</h2>
-        
-        <!-- PARCIAL 1 (CONTENIDO ORIGINAL) -->
-        <div class="parcial-section">
-            <h3><i class="fas fa-book-open"></i> Parcial 1</h3>
-            
-            <div class="project-card">
-                <div class="project-icon">
-                    <i class="fas fa-brain"></i>
-                </div>
-                <div class="project-content">
-                    <h4>Tarea 1 (1.1) Kotlin vs Java</h4>
-                    <p>Mapa mental comparando Kotlin y Java para desarrollo móvil.</p>
-                    <a href="https://drive.google.com/drive/folders/1TXKc2R09kQj1Y9eV494UxOOr58IYMYxr?usp=sharing" target="_blank" class="btn">
-                        <i class="fas fa-external-link-alt"></i> Ver mapa mental
-                    </a>
-                </div>
-            </div>
-            
-            <div class="project-card">
-                <div class="project-icon">
-                    <i class="fas fa-mobile-alt"></i>
-                </div>
-                <div class="project-content">
-                    <h4>1.2.- Conceptos básicos de Aplicaciones con Android Studio</h4>
-                    <p>Presentación con los conceptos fundamentales de desarrollo en Android Studio.</p>
-                    <a href="https://docs.google.com/presentation/d/1inAy1fCD83ADcVWUM96iVV9TvmIdrkHA8-E79qDEVr0/edit?slide=id.g33bf3960763_2_30#slide=id.g33bf3960763_2_30" target="_blank" class="btn">
-                        <i class="fas fa-external-link-alt"></i> Ver presentación
-                    </a>
-                </div>
-            </div>
-            
-            <div class="project-card">
-                <div class="project-icon">
-                    <i class="fab fa-java"></i>
-                </div>
-                <div class="project-content">
-                    <h4>1.3.- Conceptos básicos de Programación en Java</h4>
-                    <p>Diagrama con los conceptos esenciales de programación en Java.</p>
-                    <a href="https://docs.google.com/drawings/d/1BRNcxeJ8nS4lE3UTJc_PdztNjMTlawf5Xckr_Y8VDKQ/edit?usp=sharing" target="_blank" class="btn">
-                        <i class="fas fa-external-link-alt"></i> Ver diagrama
-                    </a>
-                </div>
-            </div>
-            
-            <div class="project-card">
-                <div class="project-icon">
-                    <i class="fas fa-laptop-code"></i>
-                </div>
-                <div class="project-content">
-                    <h4>1.4.- Desarrollo con Android Studio</h4>
-                    <p>Documentación y recursos sobre desarrollo con Android Studio.</p>
-                    <a href="https://www.plataformajeanpiaget.com/mod/glossary/view.php?id=100406&forceview=1" target="_blank" class="btn">
-                        <i class="fas fa-external-link-alt"></i> Ver recursos
-                    </a>
-                </div>
-            </div>
+    <nav class="materia-nav">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html#about">Inicio</a></li>
+                <li><a href="materia1.html">Análisis</a></li>
+                <li><a href="materia2.html" class="active">Móviles</a></li>
+                <li><a href="../index.html#contact">Contacto</a></li>
+                <li><a href="yo.html">Sobre mí</a></li>
+            </ul>
         </div>
+    </nav>
 
-        <!-- PARCIAL 2 - ANÁLISIS DE CÓDIGO -->
-        <div class="parcial-section">
-            <h3><i class="fas fa-book-open"></i> Parcial 3</h3>
+    <section class="materia-content">
+        <div class="container">
+            <h2>Trabajos de Móviles 2</h2>
             
-            <div class="project-card">
-                <div class="project-icon">
-                    <i class="fas fa-file-code"></i>
+            <!-- PARCIAL 1 (CONTENIDO ORIGINAL) -->
+            <div class="parcial-section">
+                <h3><i class="fas fa-book-open"></i> Parcial 1</h3>
+                
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="project-content">
+                        <h4>Tarea 1.1.-Kotlin vs Java</h4>
+                        <a href="https://drive.google.com/file/d/1dG504GSJjrkC5AlqOc9v5nFfhdfI6XoB/view?usp=sharing" target="_blank" class="btn">
+                            <i class="fas fa-external-link-alt"></i> Ver mapa mental
+                        </a>
+                    </div>
                 </div>
-                <div class="project-content">
-                    <h4>3.3.- Análisis de Código: Aplicación Android con Conexión a Servidor MySQL</h4>
-                    <p>Documento técnico detallado sobre análisis de una aplicación Android.</p>
-                    
-                    <div class="full-document">
-                        <div class="document-header">
-                            <h2 class="document-title">Análisis de Código: Aplicación Android con Conexión a Servidor MySQL</h2>
-                        </div>
+                
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="project-content">
+                        <h4>1.2.- Conceptos básicos de Aplicaciones con Android Studio</h4>
+                        <a href="https://docs.google.com/presentation/d/1inAy1fCD83ADcVWUM96iVV9TvmIdrkHA8-E79qDEVr0/edit?slide=id.g33bf3960763_2_20#slide=id.g33bf3960763_2_20" target="_blank" class="btn">
+                            <i class="fas fa-external-link-alt"></i> Ver presentación
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fab fa-java"></i>
+                    </div>
+                    <div class="project-content">
+                        <h4>1.3.- Conceptos básicos de Programación en Java</h4>
+                        <a href="https://docs.google.com/drawings/d/1BRNcxeJ8nS4lE3UTJc_PdztNjMTlawf5Xckr_Y8VDKQ/edit?usp=sharing" target="_blank" class="btn">
+                            <i class="fas fa-external-link-alt"></i> Ver diagrama
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="project-content">
+                        <h4>1.4.- Desarrollo con Android Studio</h4>
+                        <a href="https://drive.google.com/drive/folders/1YJ0Yjh7yxAfOhH1oKJMewH0YdccIkvFz?usp=sharing" target="_blank" class="btn">
+                            <i class="fas fa-external-link-alt"></i> Ver recursos
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PARCIAL 2 (CONTENIDO ORIGINAL) -->
+            <div class="parcial-section">
+                <h3><i class="fas fa-book-open"></i> Parcial 2</h3>
+                
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="project-content">
+                        <h4>Tarea 2.1.- Ejercicio con SQLiteTarea</h4>
+                        <a href="https://drive.google.com/file/d/1JvY4wQj-Ax9bVDGdlKCAb1cH33YM9GWm/view" target="_blank" class="btn">
+                            <i class="fas fa-external-link-alt"></i> Ver mapa mental
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="project-content">
+                        <h4>2.2.- Evidencia ejercicio de inserción en SQLite</h4>
+                        <a href="https://www.youtube.com/shorts/XHhPuEH7Sms" target="_blank" class="btn">
+                            <i class="fas fa-external-link-alt"></i> Ver presentación
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fab fa-java"></i>
+                    </div>
+                    <div class="project-content">
+                        <h4>2.3.- Código de evento onclick en GridView</h4>
+                        <a href="https://drive.google.com/file/d/1hQWlmfpJznaiwWx1TgQRshBf8oNJGQZ1/view?usp=sharing" target="_blank" class="btn">
+                            <i class="fas fa-external-link-alt"></i> Ver diagrama
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PARCIAL 3 - ANÁLISIS DE CÓDIGO -->
+            <div class="parcial-section">
+                <h3><i class="fas fa-book-open"></i> Parcial 3</h3>
+
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="project-content">
+                        <h4>3.1.- Conexión a base de datos en la web</h4>
+                        <a href="https://drive.google.com/file/d/1kipREunTWfMdUNxEcWrc9QGFKJ_IyBK1/view" target="_blank" class="btn">
+                            <i class="fas fa-external-link-alt"></i> Ver presentación
+                        </a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-file-code"></i>
+                    </div>
+                    <div class="project-content">
+                        <h4>3.2.- Documentación del funcionamiento de Volley</h4>
+                        <a href="https://drive.google.com/file/d/1e2CFhI7MoHXNtkj9cONyNG5I6_xSz83C/view" target="_blank" class="btn">
+                            <i class="fas fa-external-link-alt"></i> Ver presentación
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-file-code"></i>
+                    </div>
+                    <div class="project-content">
+                        <h4>3.3.- Análisis de Código: Aplicación Android con Conexión a Servidor MySQL</h4>
+                        <p>Documento técnico detallado sobre análisis de una aplicación Android.</p>
                         
-                        <!-- RESUMEN GENERAL -->
-                        <h4 class="section-title">Resumen General</h4>
-                        <div class="content-block">
-                            <p>Esta es una aplicación Android que permite:</p>
-                            <ol class="content-list">
-                                <li>Insertar datos (nombre y correo) en una base de datos MySQL a través de un servidor PHP</li>
-                                <li>Sincronizar y mostrar los datos almacenados en la base de datos</li>
-                            </ol>
-                        </div>
-                        
-                        <!-- ARQUITECTURA Y COMPONENTES -->
-                        <h4 class="section-title">Arquitectura y Componentes</h4>
-                        
-                        <h5 class="subsection-title">1. Configuración de Red (network_security_config.xml)</h5>
-                        <div class="content-block">
-                            <ul class="content-list">
-                                <li>Permite tráfico HTTP claro (no HTTPS) solo para el dominio/IP <code>192.168.16.207</code> y sus subdominios</li>
-                                <li><strong>Recomendación de seguridad:</strong> En producción, deberías usar HTTPS y certificados válidos</li>
-                            </ul>
-                        </div>
-                        
-                        <h5 class="subsection-title">2. Manifest (AndroidManifest.xml)</h5>
-                        <div class="content-block">
-                            <ul class="content-list">
-                                <li>Declara el permiso <code>INTERNET</code> necesario para las conexiones de red</li>
-                                <li>Configura la actividad principal <code>MainActivity</code></li>
-                                <li><strong>Falta:</strong> No referencia el archivo de configuración de seguridad de red (debería añadir <code>android:networkSecurityConfig="@xml/network_security_config"</code> en la etiqueta <code>&lt;application&gt;</code>)</li>
-                            </ul>
-                        </div>
-                        
-                        <h5 class="subsection-title">3. Actividad Principal (MainActivity.kt)</h5>
-                        <div class="content-block">
-                            <ul class="content-list">
-                                <li>Usa Volley para las peticiones HTTP</li>
-                                <li>Implementa dos funciones principales:
-                                    <ol type="a">
-                                        <li><code>subirDatos()</code>: Envía datos al servidor via POST</li>
-                                        <li><code>sincronizarDatos()</code>: Obtiene datos del servidor via GET y los muestra en un GridLayout</li>
-                                    </ol>
-                                </li>
-                            </ul>
-                        </div>
-                        
-                        <h5 class="subsection-title">4. Dependencias (libs.versions.toml)</h5>
-                        <div class="content-block">
-                            <ul class="content-list">
-                                <li>Incluye las bibliotecas estándar de Android (Core KT, AppCompat, Material Design)</li>
-                                <li><strong>Nota:</strong> Falta declarar explícitamente la dependencia de Volley (aunque parece estar funcionando)</li>
-                            </ul>
-                        </div>
-                        
-                        <!-- PROBLEMAS POTENCIALES -->
-                        <h4 class="section-title">Problemas Potenciales</h4>
-                        
-                        <h5 class="subsection-title">1. Seguridad</h5>
-                        <div class="content-block">
-                            <ul class="content-list">
-                                <li>Uso de HTTP en lugar de HTTPS</li>
-                                <li>IP hardcodeada (debería ser configurable)</li>
-                                <li>No hay manejo de autenticación con el servidor</li>
-                            </ul>
-                        </div>
-                        
-                        <h5 class="subsection-title">2. Experiencia de Usuario</h5>
-                        <div class="content-block">
-                            <ul class="content-list">
-                                <li>No hay indicadores de carga durante las operaciones de red</li>
-                                <li>El GridLayout podría no ser la mejor opción para mostrar datos tabulares</li>
-                            </ul>
-                        </div>
-                        
-                        <h5 class="subsection-title">3. Mantenimiento</h5>
-                        <div class="content-block">
-                            <ul class="content-list">
-                                <li>La URL del API está hardcodeada</li>
-                                <li>No hay manejo avanzado de errores</li>
-                            </ul>
-                        </div>
-                        
-                        <!-- RECOMENDACIONES DE MEJORA -->
-                        <h4 class="section-title">Recomendaciones de Mejora</h4>
-                        
-                        <h5 class="subsection-title">1. Seguridad</h5>
-                        <div class="content-block">
-                            <ul class="content-list">
-                                <li>Implementar HTTPS con certificados válidos</li>
-                                <li>Mover la URL del API a recursos/configuración</li>
-                                <li>Considerar añadir autenticación</li>
-                            </ul>
-                        </div>
-                        
-                        <h5 class="subsection-title">2. Código</h5>
-                        <div class="content-block">
-                            <ul class="content-list">
-                                <li>Refactorizar la lógica de red a un repositorio separado</li>
-                                <li>Implementar ViewModel para separar la lógica de la UI</li>
-                                <li>Usar RecyclerView en lugar de GridLayout para mostrar datos</li>
-                            </ul>
-                        </div>
-                        
-                        <h5 class="subsection-title">3. UX</h5>
-                        <div class="content-block">
-                            <ul class="content-list">
-                                <li>Añadir ProgressBar durante las operaciones de red</li>
-                                <li>Mejorar el formato de visualización de datos</li>
-                                <li>Implementar pull-to-refresh</li>
-                            </ul>
-                        </div>
-                        
-                        <h5 class="subsection-title">4. Manejo de Errores</h5>
-                        <div class="content-block">
-                            <ul class="content-list">
-                                <li>Proporcionar mensajes de error más descriptivos</li>
-                                <li>Manejar casos de falta de conexión</li>
-                            </ul>
-                        </div>
-                        
-                        <!-- CONCLUSIÓN -->
-                        <h4 class="section-title">Conclusión</h4>
-                        <div class="content-block">
-                            <p>La aplicación cumple con su función básica de CRUD contra un servidor MySQL, pero necesita mejoras significativas en seguridad, arquitectura y experiencia de usuario para ser considerada lista para producción. El código actual sirve como buen punto de partida para un proyecto de aprendizaje.</p>
+                        <div class="full-document">
+                            <div class="document-header">
+                                <h2 class="document-title">Análisis de Código: Aplicación Android con Conexión a Servidor MySQL</h2>
+                            </div>
+                            
+                            <!-- RESUMEN GENERAL -->
+                            <h4 class="section-title">Resumen General</h4>
+                            <div class="content-block">
+                                <p>Esta es una aplicación Android que permite:</p>
+                                <ol class="content-list">
+                                    <li>Insertar datos (nombre y correo) en una base de datos MySQL a través de un servidor PHP</li>
+                                    <li>Sincronizar y mostrar los datos almacenados en la base de datos</li>
+                                </ol>
+                            </div>
+                            
+                            <!-- ARQUITECTURA Y COMPONENTES -->
+                            <h4 class="section-title">Arquitectura y Componentes</h4>
+                            
+                            <h5 class="subsection-title">1. Configuración de Red (network_security_config.xml)</h5>
+                            <div class="content-block">
+                                <ul class="content-list">
+                                    <li>Permite tráfico HTTP claro (no HTTPS) solo para el dominio/IP <code>192.168.16.207</code> y sus subdominios</li>
+                                    <li><strong>Recomendación de seguridad:</strong> En producción, deberías usar HTTPS y certificados válidos</li>
+                                </ul>
+                            </div>
+                            
+                            <h5 class="subsection-title">2. Manifest (AndroidManifest.xml)</h5>
+                            <div class="content-block">
+                                <ul class="content-list">
+                                    <li>Declara el permiso <code>INTERNET</code> necesario para las conexiones de red</li>
+                                    <li>Configura la actividad principal <code>MainActivity</code></li>
+                                    <li><strong>Falta:</strong> No referencia el archivo de configuración de seguridad de red (debería añadir <code>android:networkSecurityConfig="@xml/network_security_config"</code> en la etiqueta <code>&lt;application&gt;</code>)</li>
+                                </ul>
+                            </div>
+                            
+                            <h5 class="subsection-title">3. Actividad Principal (MainActivity.kt)</h5>
+                            <div class="content-block">
+                                <ul class="content-list">
+                                    <li>Usa Volley para las peticiones HTTP</li>
+                                    <li>Implementa dos funciones principales:
+                                        <ol type="a">
+                                            <li><code>subirDatos()</code>: Envía datos al servidor via POST</li>
+                                            <li><code>sincronizarDatos()</code>: Obtiene datos del servidor via GET y los muestra en un GridLayout</li>
+                                        </ol>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <h5 class="subsection-title">4. Dependencias (libs.versions.toml)</h5>
+                            <div class="content-block">
+                                <ul class="content-list">
+                                    <li>Incluye las bibliotecas estándar de Android (Core KT, AppCompat, Material Design)</li>
+                                    <li><strong>Nota:</strong> Falta declarar explícitamente la dependencia de Volley (aunque parece estar funcionando)</li>
+                                </ul>
+                            </div>
+                            
+                            <!-- PROBLEMAS POTENCIALES -->
+                            <h4 class="section-title">Problemas Potenciales</h4>
+                            
+                            <h5 class="subsection-title">1. Seguridad</h5>
+                            <div class="content-block">
+                                <ul class="content-list">
+                                    <li>Uso de HTTP en lugar de HTTPS</li>
+                                    <li>IP hardcodeada (debería ser configurable)</li>
+                                    <li>No hay manejo de autenticación con el servidor</li>
+                                </ul>
+                            </div>
+                            
+                            <h5 class="subsection-title">2. Experiencia de Usuario</h5>
+                            <div class="content-block">
+                                <ul class="content-list">
+                                    <li>No hay indicadores de carga durante las operaciones de red</li>
+                                    <li>El GridLayout podría no ser la mejor opción para mostrar datos tabulares</li>
+                                </ul>
+                            </div>
+                            
+                            <h5 class="subsection-title">3. Mantenimiento</h5>
+                            <div class="content-block">
+                                <ul class="content-list">
+                                    <li>La URL del API está hardcodeada</li>
+                                    <li>No hay manejo avanzado de errores</li>
+                                </ul>
+                            </div>
+                            
+                            <!-- RECOMENDACIONES DE MEJORA -->
+                            <h4 class="section-title">Recomendaciones de Mejora</h4>
+                            
+                            <h5 class="subsection-title">1. Seguridad</h5>
+                            <div class="content-block">
+                                <ul class="content-list">
+                                    <li>Implementar HTTPS con certificados válidos</li>
+                                    <li>Mover la URL del API a recursos/configuración</li>
+                                    <li>Considerar añadir autenticación</li>
+                                </ul>
+                            </div>
+                            
+                            <h5 class="subsection-title">2. Código</h5>
+                            <div class="content-block">
+                                <ul class="content-list">
+                                    <li>Refactorizar la lógica de red a un repositorio separado</li>
+                                    <li>Implementar ViewModel para separar la lógica de la UI</li>
+                                    <li>Usar RecyclerView en lugar de GridLayout para mostrar datos</li>
+                                </ul>
+                            </div>
+                            
+                            <h5 class="subsection-title">3. UX</h5>
+                            <div class="content-block">
+                                <ul class="content-list">
+                                    <li>Añadir ProgressBar durante las operaciones de red</li>
+                                    <li>Mejorar el formato de visualización de datos</li>
+                                    <li>Implementar pull-to-refresh</li>
+                                </ul>
+                            </div>
+                            
+                            <h5 class="subsection-title">4. Manejo de Errores</h5>
+                            <div class="content-block">
+                                <ul class="content-list">
+                                    <li>Proporcionar mensajes de error más descriptivos</li>
+                                    <li>Manejar casos de falta de conexión</li>
+                                </ul>
+                            </div>
+                            
+                            <!-- CONCLUSIÓN -->
+                            <h4 class="section-title">Conclusión</h4>
+                            <div class="content-block">
+                                <p>La aplicación cumple con su función básica de CRUD contra un servidor MySQL, pero necesita mejoras significativas en seguridad, arquitectura y experiencia de usuario para ser considerada lista para producción. El código actual sirve como buen punto de partida para un proyecto de aprendizaje.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -316,9 +666,9 @@
         </div>
     </section>
 
-    <footer>
+    <footer class="materia-footer">
         <div class="container">
-            <p>&copy; 2023 Omar - E-Portafolio. Todos los derechos reservados.</p>
+            <p>&copy; 2025 Víctor Martínez - E-Portafolio. Todos los derechos reservados.</p>
         </div>
     </footer>
 </body>
